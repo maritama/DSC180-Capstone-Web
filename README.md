@@ -14,9 +14,6 @@ In the back-end web development, we use Spring MVC and Spring as the application
 By simply entering/attaching their desired input corpus, the user would get the mined phrases instantly, along with a more comprehensive view of the output with our auto-generated dashboard. 
 
 
-### How to Run the Code
-
-
 
 
 
