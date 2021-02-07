@@ -13,6 +13,10 @@ In the back-end web development, we use Spring MVC and Spring as the application
 
 By simply entering/attaching their desired input corpus, the user would get the mined phrases instantly, along with a more comprehensive view of the output with our auto-generated dashboard.
 
+### How to run the Code
+
+The uses should use the docker container as maritama/dsc180-capstone-web, which contains the tomcat, JDK, gcc with expose port 8080 after we complete this project. They can connect to the localhost:8080/python on their laptop after they clone this repo.
+
 
 ### Work Cited
 
