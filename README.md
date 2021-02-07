@@ -18,7 +18,6 @@ By simply entering/attaching their desired input corpus, the user would get the 
 
 Professor Jingbo Shang’s Github: https://github.com/shangjingbo1226/AutoPhrase
 
-
 Jingbo Shang, Jialu Liu, Meng Jiang, Xiang Ren, Clare R Voss, Jiawei Han, "Automated Phrase Mining from Massive Text Corpora", accepted by IEEE Transactions on Knowledge and Data Engineering, Feb. 2018.
 
 
@@ -29,10 +28,10 @@ Jingbo Shang, Jialu Liu, Meng Jiang, Xiang Ren, Clare R Voss, Jiawei Han, "Autom
 We discussed the general idea of the replication project and outlined the steps of the process together.
 
 
-Yicen worked on the majority portion of front-end and back-end development of the webs. She also revised previous quarter code and wrote a report and docker file.
+Yicen worked on the majority portion of front-end and back-end development of the webs and built docker file.
 
 
-Tiange worked on some front-end web building, tried to add the knowledge base, and revised data science repo, especially on TF-IDF analysis.
+Tiange worked on some front-end web building, tried to add the knowledge base.
 
 
 Anant tried to work on the docker file on DSMLP.
