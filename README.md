@@ -25,8 +25,6 @@ Jingbo Shang, Jialu Liu, Meng Jiang, Xiang Ren, Clare R Voss, Jiawei Han, "Autom
 
 
 ### Responsibilities
-We discussed the general idea of the replication project and outlined the steps of the process together.
-
 
 Yicen worked on the majority portion of front-end and back-end development of the webs and built docker file.
 
