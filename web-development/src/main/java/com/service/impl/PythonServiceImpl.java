@@ -27,7 +27,6 @@ public class PythonServiceImpl implements PythonService {
         // String cmd = "sh ../../DSC180A-Capstone-Project/running.sh";
         String python = "../../../../../../../phrase-mining/";
         String cmd = "sh ../../../../../../../phrase-mining/running.sh";
-        ../../../../
 
         //String cmd = "python3 "+ "/Users/johnwang/Desktop/" +"for.py";
         System.out.println(cmd);
