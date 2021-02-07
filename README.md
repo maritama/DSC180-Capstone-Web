@@ -11,7 +11,15 @@ In the back-end web development, we use Spring MVC and Spring as the application
 
 ### Purpose of the Code
 
-By simply entering/attaching their desired input corpus, the user would get the mined phrases instantly, along with a more comprehensive view of the output with our auto-generated dashboard. 
+By simply entering/attaching their desired input corpus, the user would get the mined phrases instantly, along with a more comprehensive view of the output with our auto-generated dashboard.
+
+
+### Work Cited
+
+Professor Jingbo Shang’s Github: https://github.com/shangjingbo1226/AutoPhrase
+
+
+Jingbo Shang, Jialu Liu, Meng Jiang, Xiang Ren, Clare R Voss, Jiawei Han, "Automated Phrase Mining from Massive Text Corpora", accepted by IEEE Transactions on Knowledge and Data Engineering, Feb. 2018.
 
 
 
