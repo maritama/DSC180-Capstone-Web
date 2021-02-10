@@ -1,22 +1,11 @@
-ARG BASE_CONTAINER=maritama/dsc180-capstone-web
+FROM maven:3-jdk-11 as maven_builder
 
-FROM $BASE_CONTAINER
+WORKDIR /app
+ADD web-development .
+RUN ["/usr/local/bin/mvn-entrypoint.sh", "mvn", "clean", "package"]
 
-LABEL maintainer = "Yicen Ma<yim095@ucsd.edu>"
 
-USER root
-RUN apt-get update -y
-RUN apt-get install -y htop gcc openjdk-8-jdk ant
-RUN cd /usr/local
-RUN apt-get install wget
-RUN wget https://apache.website-solution.net/tomcat/tomcat-9/v9.0.43.tar.gz
-RUN tar zxf apache-tomcat-9.0.43.tar.gz
-ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.43
-ENV PATH $PATH:$CATALINA_HOME/bin
-COPY python.war /usr/local/apache-tomcat-9.0.43/bin/startup.sh && tail -F /usr/local/apache-tomcat-9.0.43/logs/catalina.out
+FROM tomcat:9-jdk11
 
-RUN pip install --no-cache-dir requests
-
-COPY /run_jupyter.sh /
-RUN chmod 755 /run_jupyter.sh
-USER $NB_UID
+COPY --from=maven_builder /app/target/python.war $CATALINA_HOME/webapps/
+# ADD phrase-mining /app
