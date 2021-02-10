@@ -24,6 +24,7 @@ public class FileServiceImpl implements FileService {
 //            file.transferTo(new File("/Users/johnwang/Desktop/DSC180A/data/raw/input.txt"));
 //            file.transferTo(new File("/Users/gandh/DSC180-Capstone-Project/data/raw/input.txt"));
             // file.transferTo(new File("../../DSC180-Capstone-Project/data/raw/input.txt"));
+//            file.transferTo(new File("../../../../../../../../phrase-mining/data/raw/input.txt"));
             file.transferTo(new File("../../../../../../../../phrase-mining/data/raw/input.txt"));
 
 
@@ -54,9 +55,13 @@ public class FileServiceImpl implements FileService {
 //        String autoPhraseSingle = "/Users/johnwang/Desktop/DSC180A/data/outputs/AutoPhrase_single-word.txt";
 //        String autoPhraseMulti = "/Users/johnwang/Desktop/DSC180A/data/outputs/AutoPhrase_multi-words.txt";
 
-        String autoPhrase = "../../../../../../../../phrase-mining/data/outputs/AutoPhrase.txt";
-        String autoPhraseSingle = "../../../../../../../../phrase-mining/data/outputs/AutoPhrase_single-word.txt";
-        String autoPhraseMulti = "../../../../../../../../phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
+//        String autoPhrase = "../../../../../../../../phrase-mining/data/outputs/AutoPhrase.txt";
+//        String autoPhraseSingle = "../../../../../../../../phrase-mining/data/outputs/AutoPhrase_single-word.txt";
+//        String autoPhraseMulti = "../../../../../../../../phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
+
+        String autoPhrase = "../outputs/AutoPhrase.txt";
+        String autoPhraseSingle = "../phrase-mining/data/outputs/AutoPhrase_single-word.txt";
+        String autoPhraseMulti = "../phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
 
         try {
             //读取AutoPhrase.txt
@@ -117,8 +122,11 @@ public class FileServiceImpl implements FileService {
 //            String srcFile = "/Users/johnwang/Desktop/DSC180A/data/outputs/multi_value_distribution.png";
 //            String destFile = "/Users/johnwang/Desktop/python/src/main/webapp/img/multi_value_distribution.png";
 
-            String srcFile = "../../../../../../../../phrase-mining/data/outputs/multi_value_distribution.png";
-            String destFile = "../../../../webapp/img/multi_value_distribution.png";
+//            String srcFile = "../../../../../../../../phrase-mining/data/outputs/multi_value_distribution.png";
+//            String destFile = "../../../../webapp/img/multi_value_distribution.png";
+
+            String srcFile = "../phrase-mining/data/outputs/multi_value_distribution.png";
+            String destFile = "../webapp/img/multi_value_distribution.png";
 
 
             String tempFile =path+"img/multi_value_distribution.png";
@@ -147,8 +155,11 @@ public class FileServiceImpl implements FileService {
 
             // srcFile = "../../DSC180-Capstone-Project/data/outputs/single_value_distribution.png";
             // destFile = "../../DSC180-Capstone-Web/src/main/webapp/img/single_value_distribution.png";
-            srcFile = "../../../../../../../../phrase-mining/data/outputs/single_value_distribution.png";
-            destFile = "../../../../webapp/img/single_value_distribution.png";
+//            srcFile = "../../../../../../../../phrase-mining/data/outputs/single_value_distribution.png";
+//            destFile = "../../../../webapp/img/single_value_distribution.png";
+
+            srcFile = "../outputs/single_value_distribution.png";
+            destFile = "../../../web-development/src/main/webapp/img/single_value_distribution.png";
 
             tempFile =path+"img/single_value_distribution.png";
             System.out.println(tempFile);

@@ -1,4 +1,4 @@
-ARG BASE_CONTAINER=maritama/DSC180-Capstone-Web
+ARG BASE_CONTAINER=maritama/dsc180-capstone-web
 
 FROM $BASE_CONTAINER
 
