@@ -10,6 +10,8 @@ from collections import Counter
 from tqdm import tqdm
 import numpy as np
 sys.path.insert(0, 'src')
+from etl import get_data
+from eda import do_eda
 from auto import autophrase
 from visual import visual
 
@@ -20,6 +22,14 @@ def main(targets):
     targets must contain: 'data', 'analysis', 'model'. 
     `main` runs the targets in order of data=>analysis=>model.
     '''
+    with open('config/data-params.json') as fh:
+        data_cfg = json.load(fh)
+    get_data(**data_cfg)
+
+    with open('config/eda-params.json') as fh:
+        eda_cfg = json.load(fh)
+    do_eda(**eda_cfg)
+        
     with open('config/auto-params.json') as fh:
         auto_cfg = json.load(fh)
     autophrase(**auto_cfg)
