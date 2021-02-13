@@ -9,12 +9,12 @@ FROM tomcat:9-jdk11
 
 COPY --from=maven_builder /app/target/python.war $CATALINA_HOME/webapps/
 
-# RUN apt-get update -y
-# RUN apt-get install -y htop gcc openjdk-8-jdk ant
-RUN apt-get install g++ -y
-RUN DEBIAN_FRONTEND='noninteractive' apt-get install openjdk-8-jdk -y
-RUN DEBIAN_FRONTEND='noninteractive' apt-get install curl -y
-RUN DEBIAN_FRONTEND='noninteractive' apt-get install cmake -y 
+RUN apt-get update -y
+RUN apt-get install -y htop gcc ant
+# RUN apt-get install g++ -y
+# RUN DEBIAN_FRONTEND='noninteractive' apt-get install openjdk-8-jdk -y
+# RUN DEBIAN_FRONTEND='noninteractive' apt-get install curl -y
+# RUN DEBIAN_FRONTEND='noninteractive' apt-get install cmake -y 
 
 
 RUN wget -q \
