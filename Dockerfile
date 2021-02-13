@@ -9,6 +9,9 @@ FROM tomcat:9-jdk11
 
 COPY --from=maven_builder /app/target/python.war $CATALINA_HOME/webapps/
 
+RUN apt-get update -y
+RUN apt-get install -y htop gcc openjdk-8-jdk ant
+
 RUN wget -q \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
