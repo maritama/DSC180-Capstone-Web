@@ -24,7 +24,7 @@ RUN wget -q \
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN conda install pandas matplotlib seaborn
+RUN conda install pandas matplotlib seaborn sklearn
 
 WORKDIR /app
 ADD phrase-mining /app/phrase-mining
