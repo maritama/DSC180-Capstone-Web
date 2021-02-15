@@ -1,6 +1,7 @@
 (function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("echarts"));
+	
+  if(typeof exports === 'object' && typeof module === 'object')
+	  module.exports = factory(require("echarts"));
 	else if(typeof define === 'function' && define.amd)
 		define(["echarts"], factory);
 	else if(typeof exports === 'object')
