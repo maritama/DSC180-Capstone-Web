@@ -14,7 +14,6 @@ import java.io.InputStreamReader;
 @Service
 public class PythonServiceImpl implements PythonService {
 
-
     @Autowired
     WebsocketEndPoint websocketEndPoint;
     @Override
@@ -27,9 +26,9 @@ public class PythonServiceImpl implements PythonService {
         // String cmd = "sh ../../DSC180A-Capstone-Project/running.sh";
 
         // LATEST FOR DOCKER 02/13 12PM PST:
-         String cmd = "bash /app/phrase-mining/running.sh";
+        String cmd = "bash /app/phrase-mining/running.sh";
 
-//        String cmd = "bash /Users/gandh/DSC180-Capstone-Web/phrase-mining/running.sh";
+//        String cmd = "sh /Users/gandh/DSC180-Capstone-Web/phrase-mining/running.sh";
 
         //String cmd = "python3 "+ "/Users/johnwang/Desktop/" +"for.py";
         System.out.println(cmd);

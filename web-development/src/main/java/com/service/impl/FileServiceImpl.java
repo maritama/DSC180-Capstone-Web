@@ -23,11 +23,9 @@ public class FileServiceImpl implements FileService {
             //存放路径
 //            file.transferTo(new File("/Users/johnwang/Desktop/DSC180A/data/raw/input.txt"));
 //            file.transferTo(new File("/Users/gandh/DSC180-Capstone-Project/data/raw/input.txt"));
-            // file.transferTo(new File("../../DSC180-Capstone-Project/data/raw/input.txt"));
-//            file.transferTo(new File("../../../../../../../../phrase-mining/data/raw/input.txt"));
 
             // LATEST FOR DOCKER 02/13 12PM PST:
-             file.transferTo(new File("/app/phrase-mining/data/raw/input.txt"));
+            file.transferTo(new File("/app/phrase-mining/data/raw/input.txt"));
 
 //            file.transferTo(new File("Users/gandh/DSC180-Capstone-Web/phrase-mining/data/raw/input.txt"))
 

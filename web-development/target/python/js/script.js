@@ -2,7 +2,6 @@ let input = document.querySelector('input')
 
 let textarea = document.querySelector('textarea') 
 
-
   
 // This event listener has been implemented to identify a 
 // Change in the input section of the html code 
@@ -30,7 +29,6 @@ input.addEventListener('change', () => {
         const lines = file.split(/\r\n|\n/); 
         textarea.value = lines.join('\n'); 
         console.log(lines.join('\n').split(" ").slice(0,5))
-
 
         var myChart = Highcharts.chart('container', {
             chart: {
@@ -65,14 +63,15 @@ input.addEventListener('change', () => {
             }]
         });
 
- 
+
         data = Highcharts.reduce(lines, function (arr, word) {
         var obj = Highcharts.find(arr, function (obj) {
             return obj.name === word;
         });
         if (obj) {
             obj.weight += 1;
-        } else {
+        } 
+        else {
             obj = {
                 name: word,
                 weight: 1
@@ -80,29 +79,27 @@ input.addEventListener('change', () => {
             arr.push(obj);
         }
         return arr;
-    }, []);
+        }, []);
 
-    Highcharts.chart('container3', {
-        accessibility: {
-            screenReaderSection: {
-                beforeChartFormat: '<h5>{chartTitle}</h5>' +
-                    '<div>{chartSubtitle}</div>' +
-                    '<div>{chartLongdesc}</div>' +
-                    '<div>{viewTableButton}</div>'
+        Highcharts.chart('container3', {
+            accessibility: {
+                screenReaderSection: {
+                    beforeChartFormat: '<h5>{chartTitle}</h5>' +
+                        '<div>{chartSubtitle}</div>' +
+                        '<div>{chartLongdesc}</div>' +
+                        '<div>{viewTableButton}</div>'
+                }
+            },
+            series: [{
+                type: 'wordcloud',
+                data: data,
+                // name: 'Occurrences'
+            }],
+            title: {
+                text: 'Wordcloud'
             }
-        },
-        series: [{
-            type: 'wordcloud',
-            data: data,
-            // name: 'Occurrences'
-        }],
-        title: {
-            text: 'Wordcloud'
-        }
-});
+        });
         
-
-
     }
     reader.onerror = (e) => alert(e.target.error.name); 
   

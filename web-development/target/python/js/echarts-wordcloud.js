@@ -7,6 +7,7 @@
 		exports["echarts-wordcloud"] = factory(require("echarts"));
 	else
 		root["echarts-wordcloud"] = factory(root["echarts"]);
+
 })(self, function(__WEBPACK_EXTERNAL_MODULE_echarts_lib_echarts__) {
 return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
