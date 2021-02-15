@@ -1,5 +1,4 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	
+(function webpackUniversalModuleDefinition(root, factory) {	
   if(typeof exports === 'object' && typeof module === 'object')
 	  module.exports = factory(require("echarts"));
 	else if(typeof define === 'function' && define.amd)
@@ -1550,7 +1549,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_echarts_lib_echarts__;
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -1563,14 +1562,14 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_echarts_lib_echarts__;
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
@@ -1582,7 +1581,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_echarts_lib_echarts__;
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
