@@ -17,6 +17,7 @@ By simply entering/attaching their desired input corpus, the user would get the 
 
 To run this website, please follow the below steps:
 1. On a terminal:
+
    (a) docker build --no-cache -t web .
    
    (b) docker run -it --rm -p 8080:8080 web
