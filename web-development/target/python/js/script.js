@@ -99,7 +99,7 @@ input.addEventListener('change', () => {
                 text: 'Wordcloud'
             }
         });
-        
+  
     }
     reader.onerror = (e) => alert(e.target.error.name); 
   
