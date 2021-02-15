@@ -15,8 +15,11 @@ By simply entering/attaching their desired input corpus, the user would get the 
 
 ### How to run the Code
 
-The uses should use the docker container as maritama/dsc180-capstone-web, which contains the tomcat, JDK, gcc with expose port 8080 after we complete this project. They can connect to the localhost:8080/python on their laptop after they clone this repo.
-
+To run this website, please follow the below steps:
+1. On a terminal:
+   (a) docker build --no-cache -t web .
+   (b) docker run -it --rm -p 8080:8080 web
+3. On a browser open: http://localhost:8080/python
 
 ### Work Cited
 
@@ -30,10 +33,10 @@ Jingbo Shang, Jialu Liu, Meng Jiang, Xiang Ren, Clare R Voss, Jiawei Han, "Autom
 
 ### Responsibilities
 
-Yicen worked on the majority portion of front-end and back-end development of the webs and built docker file.
+Yicen worked on the majority portion of front-end and back-end development of the webs.
 
 
 Tiange worked on some front-end web building, tried to add the knowledge base.
 
 
-Anant tried to work on the docker file on DSMLP.
+Anant worked on integrating the website on docker and DSMLP.
