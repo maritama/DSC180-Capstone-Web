@@ -8,5 +8,4 @@
     "token_mapping": "token_mapping.txt",
     "input": "data/raw/input.txt",
     "output": "data/outputs/"
-
 }
