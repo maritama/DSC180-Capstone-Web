@@ -37,7 +37,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
 
     plt.figure()
     plt.title('Quality Score Distribution of Multi-Word Phrases')
-    plt.hist(data_kk_multiple['value'], alpha=0.5, label='multi', color='red')
+    plt.hist(data_kk_multi['value'], alpha=0.5, label='multi', color='red')
     plt.xlabel('Probability of Quality Word/Phrase')
     plt.ylabel('Frequency')
     plt.legend(loc = 'upper right')
@@ -47,7 +47,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     plt.figure()
     plt.title('Quality Score Distribution of Single-Word vs. Multi-Word Phrases')
     plt.hist(data_kk_single['value'], alpha = 0.5, label = 'single', color = 'gray')
-    plt.hist(data_kk_multiple['value'], alpha = 0.5, label = 'multi', color = 'red')
+    plt.hist(data_kk_multi['value'], alpha = 0.5, label = 'multi', color = 'red')
     plt.xlabel('Probability of Quality Word/Phrase')
     plt.ylabel('Frequency')
     plt.legend(loc = 'upper right')

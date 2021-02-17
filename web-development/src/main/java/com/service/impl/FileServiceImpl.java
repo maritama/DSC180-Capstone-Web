@@ -58,9 +58,9 @@ public class FileServiceImpl implements FileService {
 
 
         // LATEST FOR DOCKER 02/13 12PM PST:
-        String autoPhrase = "../outputs/AutoPhrase.txt";
-        String autoPhraseSingle = "../phrase-mining/data/outputs/AutoPhrase_single-word.txt";
-        String autoPhraseMulti = "../phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
+        String autoPhrase = "/app/phrase-mining/data/outputs/AutoPhrase.txt";
+        String autoPhraseSingle = "/app/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
+        String autoPhraseMulti = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
 
 //        String autoPhrase = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/AutoPhrase.txt";
 //        String autoPhraseSingle = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
@@ -126,8 +126,8 @@ public class FileServiceImpl implements FileService {
 //            String destFile = "/Users/johnwang/Desktop/python/src/main/webapp/img/multi_value_distribution.png";
 
             // LATEST FOR DOCKER 02/13 12PM PST:
-            String srcFile = "../phrase-mining/data/outputs/multi_value_distribution.png";
-            String destFile = "../webapp/img/multi_value_distribution.png";
+            String srcFile = "/app/phrase-mining/data/outputs/multi_value_distribution.png";
+            String destFile = "/app/webapp/img/multi_value_distribution.png";
 
 //            String srcFile = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/multi_value_distribution.png";
 //            String destFile = "/Users/gandh/DSC180-Capstone-Web/web-development/src/main/webapp/img/multi_value_distribution.png";
@@ -158,8 +158,8 @@ public class FileServiceImpl implements FileService {
 //            destFile = "/Users/johnwang/Desktop/python/src/main/webapp/img/single_value_distribution.png";
 
             // LATEST FOR DOCKER 02/13 12PM PST:
-            srcFile = "../outputs/single_value_distribution.png";
-            destFile = "../../../web-development/src/main/webapp/img/single_value_distribution.png";
+            srcFile = "/app/phrase-mining/data/outputs/single_value_distribution.png";
+            destFile = "/app/web-development/src/main/webapp/img/single_value_distribution.png";
 
 //            srcFile = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/single_value_distribution.png";
 //            destFile = "/Users/gandh/DSC180-Capstone-Web/web-development/src/main/webapp/img/single_value_distribution.png";
