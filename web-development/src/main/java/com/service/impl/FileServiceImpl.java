@@ -127,7 +127,9 @@ public class FileServiceImpl implements FileService {
 
             // LATEST FOR DOCKER 02/13 12PM PST:
             String srcFile = "/app/phrase-mining/data/outputs/multi_value_distribution.png";
-            String destFile = "/app/webapp/img/multi_value_distribution.png";
+            String destFile = "/usr/local/tomcat/webapps/python/img/multi_value_distribution.png";
+
+            
 
 //            String srcFile = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/multi_value_distribution.png";
 //            String destFile = "/Users/gandh/DSC180-Capstone-Web/web-development/src/main/webapp/img/multi_value_distribution.png";
@@ -158,8 +160,11 @@ public class FileServiceImpl implements FileService {
 //            destFile = "/Users/johnwang/Desktop/python/src/main/webapp/img/single_value_distribution.png";
 
             // LATEST FOR DOCKER 02/13 12PM PST:
+            // srcFile = "/app/phrase-mining/data/outputs/single_value_distribution.png";
+            // destFile = "/usr/local/tomcat/app/web-development/src/main/webapp/img/single_value_distribution.png";
+
             srcFile = "/app/phrase-mining/data/outputs/single_value_distribution.png";
-            destFile = "/app/web-development/src/main/webapp/img/single_value_distribution.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/single_value_distribution.png";
 
 //            srcFile = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/single_value_distribution.png";
 //            destFile = "/Users/gandh/DSC180-Capstone-Web/web-development/src/main/webapp/img/single_value_distribution.png";
