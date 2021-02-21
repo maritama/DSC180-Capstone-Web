@@ -12,20 +12,8 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     data_kk_single = pd.read_csv(input_path+single_word, sep="\t",header = None,names=['value', 'phrase'])
     data_kk_multi = pd.read_csv(input_path+multi_word, sep="\t",header = None,names=['value', 'phrase'])
 
+
     #single-word distribution
-    plt.figure()
-    plt.hist(data_kk_single['value'])
-    plt.title('result of '+file+' single value distribution')
-    plt.savefig(input_path+ 'single_value_distribution'+'.png')
-    plt.close()
-    #multi-word distribution
-    plt.figure()
-    plt.hist(data_kk_multi['value'])
-    plt.title('result of '+ file+' multi-words value distribution')
-    plt.savefig(input_path+ 'multi_value_distribution'+'.png')
-    plt.close()
-
-
     plt.figure()
     plt.title('Quality Score Distribution of Single-Word Phrases')
     plt.hist(data_kk_single['value'], alpha=0.5, label='single', color='gray')
@@ -34,7 +22,8 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     plt.legend(loc = 'upper right')
     plt.savefig(input_path + 'single_quality_score'+'.png')
     plt.close()
-
+    
+    #multi-word distribution
     plt.figure()
     plt.title('Quality Score Distribution of Multi-Word Phrases')
     plt.hist(data_kk_multi['value'], alpha=0.5, label='multi', color='red')

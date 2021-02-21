@@ -39,6 +39,21 @@
                 textarea.value = res.data.text;
             }
         });
+        upload.render({
+            elem: '#selectFiler'
+            ,url: 'baseUpload' //改成自己的上传接口
+            ,accept: 'file' //普通文件
+            ,exts: 'txt'
+            ,choose: function(obj){
+                files = obj.pushFile();
+                console.log(files)
+            }
+            ,done: function(res){
+                //layer.msg('上传成功');
+                var textarea = document.getElementById("base");
+                textarea.value = res.data.text;
+            }
+        });
         $("#run").on('click',function () {
             if(files == null)
             {
@@ -57,30 +72,6 @@
     });
 </script>
 
-<script>
-    layui.use(['upload','layer'], function() {
-        var $ = layui.jquery
-            , upload = layui.upload;
-        var layer = layui.layer;
-        var files = null;
-        //指定允许上传的文件类型
-        upload.render({
-            elem: '#selectFiler'
-            ,url: 'fileUpload' //改成自己的上传接口
-            ,accept: 'file' //普通文件
-            ,exts: 'txt'
-            ,choose: function(obj){
-                files = obj.pushFile();
-                console.log(files)
-            }
-            ,done: function(res){
-                //layer.msg('上传成功');
-                var textarea = document.getElementById("base");
-                textarea.value = res.data.text;
-            }
-        });
-    });
-</script>
 
     <br><div class="layui-container">
         <div class="layui-row">
