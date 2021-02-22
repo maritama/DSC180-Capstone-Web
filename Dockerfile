@@ -25,6 +25,7 @@ RUN wget -q \
 ENV PATH /opt/conda/bin:$PATH
 
 RUN conda install pandas matplotlib seaborn scikit-learn
+RUN pip install textblob
 
 WORKDIR /app
 ADD phrase-mining /app/phrase-mining
