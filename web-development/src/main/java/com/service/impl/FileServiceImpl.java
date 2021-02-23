@@ -57,15 +57,14 @@ public class FileServiceImpl implements FileService {
 
         // LATEST FOR DOCKER 02/22 7PM PST:
         String autoPhrase = "/app/phrase-mining/data/outputs/AutoPhrase.txt";
-        // String autoPhraseSingle = "/app/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
-        // String autoPhraseMulti = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
         String autoPhraseTf = "/app/phrase-mining/data/outputs/multiplication.txt";
         String Tfidf = "/app/phrase-mining/data/outputs/tfidf.txt";
+//        String autoPhraseSingle = "/app/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
+//        String autoPhraseMulti = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
 
         try {
             //读取AutoPhrase.txt
             File textFile = new File(autoPhrase);
-//            System.out.println(textFile==null);
             InputStreamReader read = new InputStreamReader(
                     new FileInputStream(textFile),"utf-8");
             BufferedReader bufferedReader = new BufferedReader(read);
@@ -74,7 +73,6 @@ public class FileServiceImpl implements FileService {
             String lineTxt = null;
             Map<String,Object> wordCloud = null;
             while((lineTxt = bufferedReader.readLine()) != null){
-//                System.out.println(lineTxt);
                 all += lineTxt + "\n";
                 if(linNum++ <20) {
                     String[] wordAndValue = lineTxt.split("\t");
@@ -94,6 +92,10 @@ public class FileServiceImpl implements FileService {
             bufferedReader.close();
             read.close();
             System.out.println(all);
+
+
+
+
 
             //read multiplication result
             textFile = new File(autoPhraseTf);
@@ -117,6 +119,10 @@ public class FileServiceImpl implements FileService {
             read.close();
             System.out.println(tf);
 
+
+
+
+
 //            String srcFile = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/multi_value_distribution.png";
 //            String destFile = "/Users/gandh/DSC180-Capstone-Web/web-development/src/main/webapp/img/multi_value_distribution.png";
 
@@ -124,7 +130,7 @@ public class FileServiceImpl implements FileService {
             String srcFile = "/app/phrase-mining/data/outputs/multi_quality_score.png";
             String destFile = "/usr/local/tomcat/webapps/python/img/multi_quality_score.png";
 
-            String tempFile =path+"img/multi_quality_score.png";
+            String tempFile = path + "img/multi_quality_score.png";
 //            System.out.println(srcFile);
             BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
             System.out.println(bufferedInputStream==null);
@@ -145,15 +151,19 @@ public class FileServiceImpl implements FileService {
             tempFileBufferedOutputStream.close();
             bufferedInputStream.close();
 
+
+
+
+
 //            srcFile = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/single_value_distribution.png";
 //            destFile = "/Users/gandh/DSC180-Capstone-Web/web-development/src/main/webapp/img/single_value_distribution.png";
 
             // LATEST FOR DOCKER 02/22 7PM PST:
             srcFile = "/app/phrase-mining/data/outputs/comparison_quality_score.png";
             destFile = "/usr/local/tomcat/webapps/python/img/comparison_quality_score.png";
-
-            tempFile =path+"img/comparison_quality_score.png";
+            tempFile = path + "img/comparison_quality_score.png";
             System.out.println(tempFile);
+
             bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
             destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
             tempFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(tempFile)));
@@ -171,9 +181,11 @@ public class FileServiceImpl implements FileService {
             tempFileBufferedOutputStream.close();
             bufferedInputStream.close();
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             return new Result(1,"error",null);
-        } finally {
+        }
+        finally {
             data = new HashMap<>();
             data.put("all", all);
             data.put("multi",multi);
@@ -184,6 +196,6 @@ public class FileServiceImpl implements FileService {
     }
     //  @Override
     // public Result baseAdd(MultipartFile file) {
-        
+
     // }
 }
