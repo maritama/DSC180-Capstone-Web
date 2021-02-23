@@ -22,7 +22,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     plt.legend(loc = 'upper right')
     plt.savefig(input_path + 'single_quality_score'+'.png')
     plt.close()
-    
+
     #multi-word distribution
     plt.figure()
     plt.title('Quality Score Distribution of Multi-Word Phrases')
