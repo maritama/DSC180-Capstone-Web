@@ -57,7 +57,7 @@ public class FileServiceImpl implements FileService {
 //        String autoPhraseMulti = "/Users/johnwang/Desktop/DSC180A/data/outputs/AutoPhrase_multi-words.txt";
 
 
-        // LATEST FOR DOCKER 02/13 12PM PST:
+        // LATEST FOR DOCKER 02/21 5PM PST:
         String autoPhrase = "/app/phrase-mining/data/outputs/AutoPhrase.txt";
         // String autoPhraseSingle = "/app/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
         // String autoPhraseMulti = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
