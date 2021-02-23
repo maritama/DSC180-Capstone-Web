@@ -63,7 +63,9 @@ public class FileServiceImpl implements FileService {
 //        String autoPhraseMulti = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
 
         try {
-            //读取AutoPhrase.txt
+            /*
+             ** read autophrase results
+             */
             File textFile = new File(autoPhrase);
             InputStreamReader read = new InputStreamReader(
                     new FileInputStream(textFile),"utf-8");
@@ -95,9 +97,9 @@ public class FileServiceImpl implements FileService {
 
 
 
-
-
-            //read multiplication result
+            /*
+             ** read multiplication results
+             */
             textFile = new File(autoPhraseTf);
             read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
             bufferedReader = new BufferedReader(read);
@@ -108,7 +110,12 @@ public class FileServiceImpl implements FileService {
             read.close();
             System.out.println(multi);
 
-            //read tfidf results
+
+
+
+            /*
+             ** read tfidf results
+             */
             textFile = new File(Tfidf);
             read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
             bufferedReader = new BufferedReader(read);
