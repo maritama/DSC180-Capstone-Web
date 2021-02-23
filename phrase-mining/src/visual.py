@@ -6,6 +6,8 @@ from tqdm import tqdm
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 import collections
+from textblob import TextBlob
+import re
 
 def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_word,token_mapping):
     print("Creating Distribution graphs of the outputs")
@@ -50,7 +52,30 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         ds = pd.read_csv('data/outputs/AutoPhrase_single-word.txt',sep='\t')
 
 
-        #tf-idf top 20
+
+        #sentiment analysis
+        kk = []
+        for i in data:
+            kk.append(TextBlob(i).sentiment.polarity)
+        plt.figure()
+        plt.hist(kk)
+        plt.title('Sentiment Polarity Distribution')
+        plt.savefig(input_path+ 'sentiment_polarity_distribution'+'.png')
+        plt.close()
+
+        dd = []
+        for i in data:
+            dd.append(TextBlob(i).sentiment.subjectivity)
+        plt.figure()
+        plt.hist(dd)
+        plt.title('Sentiment Subjectivity Distribution')
+        plt.savefig(input_path+ 'sentiment_subjectivity_distribution'+'.png')
+        plt.close()
+
+
+
+
+        #tf-idf top 20 single
         tfIdfVectorizer=TfidfVectorizer(stop_words='english')
         tfIdf = tfIdfVectorizer.fit_transform(data)
         cum = []
@@ -64,9 +89,30 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         res = pd.DataFrame({'Word':dict(counter).keys(),'Score':dict(counter).values()})
         res['Score'] = res['Score'].apply(lambda x: (x-min(res['Score']))/(max(res['Score'])-min(res['Score'])))
         res.sort_values('Score',ascending=False,inplace=True)
-        res.to_csv(output+'tfidf.txt',index=False, header = None, sep='\t')
+        res.to_csv(output+'tfidfsingle.txt',index=False, header = None, sep='\t')
 
-        # autophrase top 20
+
+
+        #tf-idf top 20 multi
+        tfIdfVectorizer=TfidfVectorizer(stop_words='english',ngram_range=(2,2))
+        tfIdf = tfIdfVectorizer.fit_transform(data)
+        cum = []
+        for i in tqdm(range(tfIdf.shape[0])):
+            df = pd.DataFrame(tfIdf[i].T.todense(), index=tfIdfVectorizer.get_feature_names(), columns=["TF-IDF"])
+            df = df[df['TF-IDF']!=0].sort_values('TF-IDF', ascending=False)
+            cum.append(df['TF-IDF'].to_dict())
+        counter = collections.Counter()
+        for d in cum:
+            counter.update(d)
+        res = pd.DataFrame({'Word':dict(counter).keys(),'Score':dict(counter).values()})
+        res['Score'] = res['Score'].apply(lambda x: (x-min(res['Score']))/(max(res['Score'])-min(res['Score'])))
+        res.sort_values('Score',ascending=False,inplace=True)
+        res.to_csv(output+'tfidfmulti.txt',index=False, header = None, sep='\t')
+
+
+
+        #autophrase top 20 single
+        ds = pd.read_csv('data/outputs/AutoPhrase_single-word.txt',sep='\t')
         row = ds.columns.values
         ds.columns = ['Score','Word']
         ds.loc[len(df)] = row
@@ -74,9 +120,38 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         ds.sort_values('Score',inplace=True,ascending=False)
         res.index = res.Word
         ds.index = ds.Word
-        ds.to_csv(output+'quality.txt',index=False, header = None, sep='\t')
+        ds.to_csv(output+'qualitysingle.txt',index=False, header = None, sep='\t')
 
-        # multiplication top 20
+
+
+        #autophrase top 20 multi
+        ds = pd.read_csv('data/outputs/AutoPhrase_multi-words.txt',sep='\t')
+        row = ds.columns.values
+        ds.columns = ['Score','Word']
+        ds.loc[len(df)] = row
+        ds['Score'] = ds['Score'].apply(lambda x:float(x))
+        ds.sort_values('Score',inplace=True,ascending=False)
+        res.index = res.Word
+        ds.index = ds.Word
+        ds.to_csv(output+'qualitymulti.txt',index=False, header = None, sep='\t')
+
+
+
+        #multiplication top 20 single
+        haha = {}
+        for key in ds.Score.to_dict():
+            try:
+                value = (ds.Score.to_dict()[key] * res.Score.to_dict()[key])
+                haha[key] = value
+            except:
+                pass
+        wala = pd.DataFrame({'Word':haha.keys(),'Score':haha.values()})
+        wala.sort_values('Score',ascending=False,inplace=True)
+        wala.to_csv(output+'multiplicationsingle.txt',header = None, index=False, sep='\t')
+
+
+
+        #multiplication top 20 multi
         haha = {}
         for key in ds.Score.to_dict():
             try:
@@ -86,40 +161,46 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
                 pass
         lala = pd.DataFrame({'Word':haha.keys(),'Score':haha.values()})
         lala.sort_values('Score',ascending=False,inplace=True)
-        lala.to_csv(output+'multiplication.txt',header = None, index=False, sep='\t')
+        lala.to_csv(output+'multiplicationmulti.txt',header = None, index=False, sep='\t')
 
 
-        # 20 most frequent words
-        with open(input, 'r') as input_file:
-            input_text = input_file.read()
 
-        word_lst = re.findall(r'[A-Za-z]+[0-9]?[+-]*', input_text)
-        word_count = Counter(word_lst)
+        #combine multiplication single and multi
+        final = pd.concat([wala,lala]).sort_values('Score',ascending=False)
+        final.to_csv(output+'multiplicationall.txt',header = None, index=False, sep='\t')
 
+
+
+        # scatterplot - frequency vs score
+        with open(file, 'r') as file_op:
+            d = file_op.read()
+
+        word_list = re.findall(r'[A-Za-z]+[0-9]?[+-]*', d)
+        word_count = Counter(word_list)
         single_top_20 = data_kk_single[:20]
         single_top_20['frequency'] = single_top_20.apply(lambda row: word_count[row['phrase']], axis = 1)
+        single_top_20.to_csv(output+'multiplicationall.txt',header = None, index=False, sep='\t')
 
-        plt.figure()
-        plt.title('Quality vs. Frequency of Top 20 Single-Word Phrases')
-        plt.xlabel('Quality Score')
+        plt.title('Word Frequency vs AutoPhrase Score')
+        plt.xlabel('Score')
         plt.ylabel('Frequency')
 
         for index, row in single_top_20.iterrows():
-            plt.text(x = row['value'],
-                    y = row['frequency'],
-                    s = row['phrase'],
-                    size = 8,
+            plt.text(x = row.value,
+                    y = row.frequency,
+                    s = row.phrase,
+                    size = 5,
                     horizontalalignment = 'center')
 
-        plt.scatter(x = single_top_20['value'],
-                    y = single_top_20['frequency'],
-                    c = single_top_20['frequency'],
-                    s = single_top_20['value'],
+        plt.scatter(x = single_top_20.value,
+                    y = single_top_20.frequency,
+                    c = single_top_20.frequency,
+                    s = single_top_20.value,
                     linewidths = 2,
-                    edgecolor = 'w',
+                    edgecolor='w',
                     alpha = 0.5)
 
-        plt.savefig(input_path + 'top_20_value_frequency' + '.png')
+        plt.savefig(input_path + 'freq_score_plot' + '.png')
         plt.close()
 
     except:
