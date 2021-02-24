@@ -201,8 +201,36 @@ public class FileServiceImpl implements FileService {
             return new Result(0, "success", data);
         }
     }
-    //  @Override
-    // public Result baseAdd(MultipartFile file) {
-        
-    // }
+    @Override
+    public Result baseAdd(MultipartFile file) {
+        String text = "";
+
+        Map<String, Object> data = null;
+        try {
+            //存放路径
+            File addFile = new File("/app/phrase-mining/AutoPhrase/data/EN/wiki_quality.txt");
+
+            InputStreamReader read = new InputStreamReader(
+                    file.getInputStream(),"utf-8");
+            BufferedReader bufferedReader = new BufferedReader(read);
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(addFile,true)));
+            String lineTxt = null;
+            int result = 0;
+            while((result = bufferedReader.read())!=-1)
+            {
+                bufferedWriter.write(result);
+                //读取到的是int类型的，强制类型转换
+                text += String.valueOf((char)result);
+            }
+            System.out.println(text);
+            bufferedReader.close();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            return new Result(1,"error",null);
+        } finally {
+            data = new HashMap<>();
+            data.put("text", text);
+            return new Result(0, "success", data);
+        }
+    }
 }

@@ -35,12 +35,12 @@ public class IndexController {
         return fileService.fileTransfer(file);
     }
 
-    // @ResponseBody
-    // @RequestMapping(value="/baseUpload",method = RequestMethod.POST)
-    // public Result baseUp(MultipartFile file)
-    // {
-    //     return fileService.baseAdd(file);
-    // }
+    @ResponseBody
+    @RequestMapping(value="/baseUpload",method = RequestMethod.POST)
+    public Result baseUp(MultipartFile file)
+    {
+        return fileService.baseAdd(file);
+    }
 
     @RequestMapping(value="/run",method = RequestMethod.GET)
     public String run()

@@ -6,5 +6,5 @@ import org.springframework.web.multipart.MultipartFile;
 public interface FileService {
     Result fileTransfer(MultipartFile file);
     Result fileRead(String path);
-    // Result baseAdd(MultipartFile file);
+    Result baseAdd(MultipartFile file);
 }
