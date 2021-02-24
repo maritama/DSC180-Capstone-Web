@@ -58,8 +58,10 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         for i in data:
             kk.append(TextBlob(i).sentiment.polarity)
         plt.figure()
-        plt.hist(kk)
+        plt.hist(kk, color = 'green')
         plt.title('Sentiment Polarity Distribution')
+        plt.xlabel('Polarity Score')
+        plt.ylabel('Frequency')
         plt.savefig(input_path+ 'sentiment_polarity_distribution'+'.png')
         plt.close()
 
@@ -67,8 +69,10 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         for i in data:
             dd.append(TextBlob(i).sentiment.subjectivity)
         plt.figure()
-        plt.hist(dd)
+        plt.hist(dd, color = 'yellow')
         plt.title('Sentiment Subjectivity Distribution')
+        plt.xlabel('Subjectivity Score')
+        plt.ylabel('Frequency')
         plt.savefig(input_path+ 'sentiment_subjectivity_distribution'+'.png')
         plt.close()
 
