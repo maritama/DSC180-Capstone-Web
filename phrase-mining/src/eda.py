@@ -10,27 +10,31 @@ def do_eda(out_dir,input_path,file):
     if file == "input":
         data_kk = pd.read_csv(input_path, header=None, names=['sentence'])
         data_kk['length'] = data_kk['sentence'].apply(lambda x: len(str(x).split(' ')))
+
         #length outlier
         plt.figure()
-        plt.hist(data_kk['length'], bins = 100)  
+        plt.hist(data_kk['length'], bins = 100)
         plt.title(file+'_outlier')
         plt.savefig(out_dir+'outlier'+'.png')
         plt.close()
+
         #box plot length
         plt.figure()
         sns.boxplot(x=data_kk['length']).set_title('box plot of length sentences '+file)
         plt.savefig(out_dir+'boxplot.png')
         plt.close()
+
         #cleaned
         mean_kk = data_kk['length'].describe()['mean']
         std_kk = data_kk['length'].describe()['std']
         percent_kk = mean_kk+std_kk*3
         cleaned_kk = data_kk[data_kk['length']<percent_kk]
         plt.figure()
-        plt.hist(cleaned_kk['length'], bins = 20)  
+        plt.hist(cleaned_kk['length'], bins = 20)
         plt.title('Cleaned set '+file)
         plt.savefig(out_dir+'cleaned_set.png')
         plt.close()
+
         #token
         tokens_kk = data_kk['sentence'].str.split(expand=True).stack().value_counts().to_dict()
         token_arr_kk = list(tokens_kk.values())
@@ -49,12 +53,14 @@ def do_eda(out_dir,input_path,file):
     if file == "DBLP":
         data = pd.read_csv(input_path, header=None, names=['sentence'])
         data['length'] = data['sentence'].apply(lambda x: len(str(x).split(' ')))
+
         #length outlier
         plt.figure()
-        plt.hist(data['length'], bins = 100)  
+        plt.hist(data['length'], bins = 100)
         plt.title(file+'_outlier')
         plt.savefig(out_dir+'outlier'+'.png')
         plt.close()
+
         #box plot length
         plt.figure()
         sns.boxplot(x=data['length']).set_title('box plot of length sentences '+file)
@@ -66,7 +72,7 @@ def do_eda(out_dir,input_path,file):
         percent = mean+std*3
         cleaned = data[data['length']<percent]
         plt.figure()
-        plt.hist(cleaned['length'], bins = 20)  
+        plt.hist(cleaned['length'], bins = 20)
         plt.title('Cleaned set '+file)
         plt.savefig(out_dir+'cleaned_set.png')
         plt.close()
@@ -78,7 +84,7 @@ def do_eda(out_dir,input_path,file):
             tokens = data['sentence'][prev:i].str.split(expand=True).stack().value_counts().to_dict()
             output += Counter(tokens)
             prev = i
-        
+
         token_arr = list(output.values())
         num_rare = sum(i < 5 for i in token_arr)
 
