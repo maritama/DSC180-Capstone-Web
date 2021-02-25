@@ -10,18 +10,24 @@ def do_eda(out_dir,input_path,file):
     if file == "input":
         data_kk = pd.read_csv(input_path, header=None, names=['sentence'])
         data_kk['length'] = data_kk['sentence'].apply(lambda x: len(str(x).split(' ')))
+        data_kk['length_sentnece'] = data_kk['sentence'].apply(lambda x: len(str(x).split('.'))-1)
 
-        #length outlier
+        #input words distribution for each sentence
         plt.figure()
-        plt.hist(data_kk['length'], bins = 100)
-        plt.title(file+'_outlier')
-        plt.savefig(out_dir+'outlier'+'.png')
+        plt.hist(data_kk['length'],label='words length', color='purple')
+        plt.title('Input Words Distribution for Each Sentence')
+        plt.xlabel('Length')
+        plt.ylabel('Frequency')
+        plt.legend(loc = 'upper right')
+        plt.savefig(out_dir+'word_distribution.png')
         plt.close()
 
         #box plot length
         plt.figure()
-        sns.boxplot(x=data_kk['length']).set_title('box plot of length sentences '+file)
-        plt.savefig(out_dir+'boxplot.png')
+        sns.boxplot(x=data_kk['length']).set_title('Box Plot of Words Lengths in Each Sentence')
+        plt.xlabel('Length')
+        plt.ylabel('Frequency')
+        plt.savefig(out_dir+'box_plot_word_length.png')
         plt.close()
 
         #cleaned
@@ -37,14 +43,32 @@ def do_eda(out_dir,input_path,file):
 
         #token
         tokens_kk = data_kk['sentence'].str.split(expand=True).stack().value_counts().to_dict()
+        token = pd.DataFrame.from_dict(tokens_kk,orient='index', columns = ['count'])
+        plt.figure()
+        token['words'] = token.index
+        token = token.reset_index(drop = True)
+        plt.scatter(x = list(token[:20]['count']),
+                            y =list(token[:20]['words']),
+                            linewidths = 2,
+                            edgecolor='b',
+                            alpha = 0.5)
+        plt.title('Tokenization Top20 Words Frequency')
+        plt.xlabel('Frequency')
+        plt.ylabel('Words')
+        plt.savefig(out_dir+'tokens_top20_words.png')
+        plt.close()
+        
         token_arr_kk = list(tokens_kk.values())
         plt.figure()
-        plt.hist(list(tokens_kk.values()), bins = 50)
-        plt.title('tokens distribution of '+ file)
-        plt.savefig(out_dir+'tokens_distribution.png')
+        plt.hist(list(tokens_kk.values()), bins = 50, color = 'pink',alpha = 0.5)
+        plt.xlabel('Count Time')
+        plt.ylabel('Frequency')
+        plt.title('Tokenization Frequency Distribution')
+        plt.savefig(out_dir+'tokens_freq.png')
         plt.close()
+        
         num_rare_kk = sum(i < 5 for i in token_arr_kk)
-        strs_kk = 'Mean for length distribution of '+ file+ ' is ' + str(mean_kk) + '. Standard deviation is ' + str(std_kk) + '. Number of Rare tokens is ' + str(num_rare_kk) +'.'
+        strs_kk = 'There are '+ str(data_kk['length_sentnece'].sum())+' sentences in this input text file. '+'The mean of the input text word length'+ ' is around ' + str(round(mean_kk)) + ' for each sentence with the standard deviation ' + str(round(std_kk)) + '. Number of Rare tokens is ' + str(num_rare_kk) +' (which defined as the the number of tokens is less than 5).'
         f = open(out_dir + "description.txt", "a")
         f.write(strs_kk)
         f.close()
