@@ -145,6 +145,52 @@
                 many limitations, most majorly that recurring word sequences may not form meaningful phrases
                 (or be structured), which causes semantic ambiguity and misleading quality assessment.
                 </p>
+                <p>
+                    AutoPhrase aka Automated Phrase Mining from Massive Text Corpora, has a better performance in mining phrases from a large corpus with minimizing human labeling effort with domain independence in any provided knowledge base languages. It performs based on Robust Positive-Only Distant Training and POS-Guided Phrasal Segmentation methods to compute the values of phrase quality.
+                    It produces outputs of ranked lists with the decreasing quality phrases. AutoPhrase is runnable with Bash Scripts. It reads the text corpus and generates the quality phrases. We put the user input at the backend folder per AutoPhrase repo requirement. 
+                    We utilized our Replication Project from DSC180A. When the user clicks ‘Run’, our scripts will call Python to run the AutoPhrase algorithm on the input data. Once done, the script reads the figures generated from the AutoPhrase results, posting it on the webpage.
+                </p>
+            </div>
+        </div>
+
+
+                    <br>
+                    <div class="layui-container">
+                    <div class="layui-row">
+                        <div class="layui-col-md1">
+                            <h2>
+                                Purpose of the Web
+                            </h2>
+                        </div>
+                    </div><br>
+
+                    <div class="layui-row">
+                        <div class="layui-col-md12">
+                            <p>
+                                The website, once deployed, allows users to take advantage of AutoPhrase algorithm and get a comprehensive understanding of their text corpus in term of visualizations by simply uploading txt files.
+                    We also provide the option for users to upload their own knowledge base if their input corpus is very domain-specific.
+                </p>
+                            
+                        </div>
+                    </div>
+
+        <br>
+        <div class="layui-container">
+        <div class="layui-row">
+            <div class="layui-col-md1">
+                <h2>
+                    Web Application Usage
+                </h2>
+            </div>
+        </div><br>
+
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <p>1. Upload the text corpus </p>
+            <p>2. Upload the knowledge base(optional)</p>
+            <p>3. Click Run and Wait (Runtime depends on the input file size)</p>
+            <p>4. Get the generated visualization!</p>
+
             </div>
         </div>
 
