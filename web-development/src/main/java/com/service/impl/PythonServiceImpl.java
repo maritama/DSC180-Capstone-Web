@@ -30,7 +30,6 @@ public class PythonServiceImpl implements PythonService {
         //String cmd = "python3 "+ "/Users/johnwang/Desktop/" +"for.py";
         System.out.println(cmd);
         try{
-            //Runtime.getRuntime().exec("cd /Users/johnwang/Desktop/DSC180b-Capstone-Project/");
             Process proc = Runtime.getRuntime().exec(cmd);
             BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line = null;
