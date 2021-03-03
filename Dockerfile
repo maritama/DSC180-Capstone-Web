@@ -34,3 +34,5 @@ RUN cd /app/phrase-mining && \
     git clone https://github.com/shangjingbo1226/AutoPhrase.git && \
     cd AutoPhrase %% \
     git checkout 36312ae
+
+RUN pip install textblob
