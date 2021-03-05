@@ -4,7 +4,7 @@ import gzip
 import pandas as pd
 
 def get_data(file, out_path):
-    print('Downloading Data')
+    print('Cleaning Data')
     if file == 'DBLP.txt':
         url = 'http://dmserv2.cs.illinois.edu/data/DBLP.txt.gz'
         r = requests.get(url, allow_redirects=True)

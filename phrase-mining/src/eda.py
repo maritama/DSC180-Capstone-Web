@@ -19,7 +19,7 @@ def do_eda(out_dir,input_path,file):
         plt.xlabel('Length')
         plt.ylabel('Frequency')
         plt.legend(loc = 'upper right')
-        plt.savefig(out_dir+'word_distribution.png')
+        plt.savefig(out_dir+'word_distribution.png', dpi = 300)
         plt.close()
 
         #box plot length
@@ -27,7 +27,7 @@ def do_eda(out_dir,input_path,file):
         sns.boxplot(x=data_kk['length']).set_title('Box Plot of Words Lengths in Each Sentence')
         plt.xlabel('Length')
         plt.ylabel('Frequency')
-        plt.savefig(out_dir+'box_plot_word_length.png')
+        plt.savefig(out_dir+'box_plot_word_length.png', dpi = 300)
         plt.close()
 
         #cleaned
@@ -38,7 +38,7 @@ def do_eda(out_dir,input_path,file):
         plt.figure()
         plt.hist(cleaned_kk['length'], bins = 20)
         plt.title('Cleaned set '+file)
-        plt.savefig(out_dir+'cleaned_set.png')
+        plt.savefig(out_dir+'cleaned_set.png', dpi = 300)
         plt.close()
 
         #token
@@ -55,7 +55,7 @@ def do_eda(out_dir,input_path,file):
         plt.title('Tokenization Top20 Words Frequency')
         plt.xlabel('Frequency')
         plt.ylabel('Words')
-        plt.savefig(out_dir+'tokens_top20_words.png')
+        plt.savefig(out_dir+'tokens_top20_words.png', dpi = 300)
         plt.close()
         
         token_arr_kk = list(tokens_kk.values())
@@ -64,7 +64,7 @@ def do_eda(out_dir,input_path,file):
         plt.xlabel('Count Time')
         plt.ylabel('Frequency')
         plt.title('Tokenization Frequency Distribution')
-        plt.savefig(out_dir+'tokens_freq.png')
+        plt.savefig(out_dir+'tokens_freq.png', dpi = 300)
         plt.close()
         
         num_rare_kk = sum(i < 5 for i in token_arr_kk)
