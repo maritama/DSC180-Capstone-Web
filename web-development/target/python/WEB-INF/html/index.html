@@ -39,6 +39,21 @@
                 textarea.value = res.data.text;
             }
         });
+        upload.render({
+            elem: '#selectFiler'
+            ,url: 'baseUpload' //改成自己的上传接口
+            ,accept: 'file' //普通文件
+            ,exts: 'txt'
+            ,choose: function(obj){
+                files = obj.pushFile();
+                console.log(files)
+            }
+            ,done: function(res){
+
+                var textarea = document.getElementById("base");
+                textarea.value = res.data.text;
+            }
+        });
         $("#run").on('click',function () {
             if(files == null)
             {
@@ -52,36 +67,15 @@
                     }
                 });
             } else
+            {
                 // window.location.href='http://localhost:8080/python/run';
-                window.location.href = 'https://white-wildflower-6469.fly.dev/python/'
+                window.location.href = 'https://white-wildflower-6469.fly.dev/python/run';
+            }
         });
     });
 </script>
 
-<script>
-    layui.use(['upload','layer'], function() {
-        var $ = layui.jquery
-            , upload = layui.upload;
-        var layer = layui.layer;
-        var files = null;
-        //指定允许上传的文件类型
-        upload.render({
-            elem: '#selectFiler'
-            ,url: 'fileUpload' //改成自己的上传接口
-            ,accept: 'file' //普通文件
-            ,exts: 'txt'
-            ,choose: function(obj){
-                files = obj.pushFile();
-                console.log(files)
-            }
-            ,done: function(res){
-                //layer.msg('上传成功');
-                var textarea = document.getElementById("base");
-                textarea.value = res.data.text;
-            }
-        });
-    });
-</script>
+
     <br><div class="layui-container">
         <div class="layui-row">
             <div class="layui-col-md6 layui-col-md-offset3">
@@ -109,9 +103,9 @@
 
             </div>
 
-            <div class="layui-col-md2 layui-col-md-offset2">
+            <div class="layui-col-md2 layui-col-md-offset1">
                 <div class="layui-upload">
-                    <button type="button" class="layui-btn layui-btn-primary" id="selectFiler">Upload Language Base(Optional)</button>
+                    <button type="button" class="layui-btn layui-btn-primary" id="selectFiler">Upload Knowledge Base(Optional)</button>
                 </div>
             </div>
 
@@ -120,9 +114,15 @@
                     <button type="button" class="layui-btn layui-btn-primary" id="run">Run AutoPhrase</button>
                 </div>
             </div>
-        </div>
+        </div><br>
+
+        <br><div class="layui-container">
+
         <div class="layui-row">
             <div class="layui-col-md12">
+                <p>
+                    Input Texts:
+                </p>
                 <textarea cols="30" rows="20x" id="text" disabled="disabled" placeholder="required a .txt file" class="layui-textarea">
                 </textarea>
             </div>
@@ -130,41 +130,96 @@
 
         <div class="layui-row">
             <div class="layui-col-md12">
+                <p>
+                    Knowledge Base File:
+                </p>
                 <textarea cols="15" rows="10x" id="base" disabled="disabled" placeholder="required a .txt file" class="layui-textarea">
                 </textarea>
             </div>
         </div>
 
-        <br><div class="layui-container">
-        <div class="layui-row">
-            <div class="layui-col-md1">
+
+        <br>
+        <div class="layui-container">
+            <div class="layui-row">
+
                 <h2>
                     Background
                 </h2>
-            </div>
-        </div><br>
+            </div><br>
+
 
         <div class="layui-row">
             <div class="layui-col-md12">
                 <p>
-                Phrase mining - the extraction of high-quality phrases from a large input corpus - is an
+                Phrase mining
+                </p><br>
+                <p>
+                    The extraction of high-quality phrases from a large input corpus - is an
                 important and interesting skill to analyze text datasets with. It has various applications such as
                 information extraction, topic modeling, etc. It also plays an important role in domains like
                 market research, public sentiment and fraud detection. Raw frequency-based phrase mining has
                 many limitations, most majorly that recurring word sequences may not form meaningful phrases
                 (or be structured), which causes semantic ambiguity and misleading quality assessment.
                 </p>
+                <br>
+                <p>
+                    AutoPhrase
+                </p><br>
+                <p>
+                    aka Automated Phrase Mining from Massive Text Corpora, has a better performance in mining phrases from a large corpus with minimizing human labeling effort with domain independence in any provided knowledge base languages. It performs based on Robust Positive-Only Distant Training and POS-Guided Phrasal Segmentation methods to compute the values of phrase quality.
+                    It produces outputs of ranked lists with the decreasing quality phrases. AutoPhrase is runnable with Bash Scripts. It reads the text corpus and generates the quality phrases. We put the user input at the backend folder per AutoPhrase repo requirement. 
+                    We utilized our Replication Project from DSC180A. When the user clicks ‘Run’, our scripts will call Python to run the AutoPhrase algorithm on the input data. Once done, the script reads the figures generated from the AutoPhrase results, posting it on the webpage.
+                </p><br>
+            </div>
+        </div>
+
+
+                    <br>
+                    <div class="layui-container">
+                    <div class="layui-row">
+
+                            <h2>
+                                Purpose of the Web
+                            </h2>
+                    </div><br>
+
+                    <div class="layui-row">
+                        <div class="layui-col-md12">
+                            <p>
+                                The website, once deployed, allows users to take advantage of AutoPhrase algorithm and get a comprehensive understanding of their text corpus in term of visualizations by simply uploading txt files.
+                    We also provide the option for users to upload their own knowledge base if their input corpus is very domain-specific.
+                </p>
+                            
+                        </div>
+                    </div>
+                        <br>
+                        <div class="layui-container">
+                            <div class="layui-row">
+
+                                <h2>
+                                    Web Application Usage
+                                </h2>
+                            </div><br>
+
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <p>1. Upload the text corpus </p>
+            <p>2. Upload the knowledge base(optional)</p>
+            <p>3. Click Run and Wait (Runtime depends on the input file size)</p>
+            <p>4. Get the generated visualization!</p>
+
             </div>
         </div>
 
         <br>
         <div class="layui-container">
         <div class="layui-row">
-            <div class="layui-col-md1">
-                <h2>
-                    Reference
-                </h2>
-            </div>
+
+            <h2>
+                Reference
+            </h2>
+        </div>
         </div><br>
 
         <div class="layui-row">

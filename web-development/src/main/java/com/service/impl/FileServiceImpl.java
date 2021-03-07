@@ -184,7 +184,6 @@ public class FileServiceImpl implements FileService {
             /*
              ** read multi quality score image
              */
-            // LATEST FOR DOCKER 02/22 7PM PST:
             String srcFile = "/app/phrase-mining/data/outputs/multi_quality_score.png";
             String destFile = "/usr/local/tomcat/webapps/python/img/multi_quality_score.png";
             String tempFile = path + "img/multi_quality_score.png";
@@ -214,8 +213,6 @@ public class FileServiceImpl implements FileService {
             /*
              ** read comparison quality score image
              */
-
-            // LATEST FOR DOCKER 02/22 7PM PST:
             srcFile = "/app/phrase-mining/data/outputs/comparison_quality_score.png";
             destFile = "/usr/local/tomcat/webapps/python/img/comparison_quality_score.png";
             tempFile = path + "img/comparison_quality_score.png";
