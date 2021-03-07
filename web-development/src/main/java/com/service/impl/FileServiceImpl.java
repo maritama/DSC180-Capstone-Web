@@ -124,7 +124,7 @@ public class FileServiceImpl implements FileService {
             /*
              ** read multi-phrase results
              */
-            textFile = new File(autophrase_multi);
+            textFile = new File(autoPhrase_multi);
             read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
             bufferedReader = new BufferedReader(read);
             while((lineTxt = bufferedReader.readLine()) != null){
