@@ -23,7 +23,13 @@ To run this website, please follow the below steps:
    (b) docker run -it --rm -p 8080:8080 web
 2. On a browser open: http://localhost:8080/python
 
-Comments: There are still some issues on the deployment part. Therefore, the last front web files, word clouds and images cannot shown up successful. If you want to check all the results, you can use IntelliJ IDEA with the tomcat envionment to open the web. We will definitely fix these issue for the future works.
+OR
+
+Visit our website:
+
+https://white-wildflower-6469.fly.dev/python/
+
+
 
 ### Work Cited
 
