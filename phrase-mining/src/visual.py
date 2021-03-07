@@ -250,10 +250,10 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         counter = collections.Counter()
         for d in cum:
             counter.update(d)
-        res = pd.DataFrame({'Word':dict(counter).keys(),'Score':dict(counter).values()})
-        res['Score'] = res['Score'].apply(lambda x: (x-min(res['Score']))/(max(res['Score'])-min(res['Score'])))
-        res.sort_values('Score',ascending=False,inplace=True)
-        res.to_csv('data/outputs/tfidfsingle.csv',index=False)
+        res1 = pd.DataFrame({'Word':dict(counter).keys(),'Score':dict(counter).values()})
+        res1['Score'] = res1['Score'].apply(lambda x: (x-min(res1['Score']))/(max(res1['Score'])-min(res1['Score'])))
+        res1.sort_values('Score',ascending=False,inplace=True)
+        res1.to_csv('data/outputs/tfidfsingle.csv',index=False)
 
         #autophrase top 20 single
         ds = pd.read_csv('data/outputs/AutoPhrase_single-word.txt',sep='\t')
@@ -290,10 +290,10 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         counter = collections.Counter()
         for d in cum:
             counter.update(d)
-        res = pd.DataFrame({'Word':dict(counter).keys(),'Score':dict(counter).values()})
-        res['Score'] = res['Score'].apply(lambda x: (x-min(res['Score']))/(max(res['Score'])-min(res['Score'])))
-        res.sort_values('Score',ascending=False,inplace=True)
-        res.to_csv('data/outputs/tfidfmulti.csv',index=False)
+        res2 = pd.DataFrame({'Word':dict(counter).keys(),'Score':dict(counter).values()})
+        res2['Score'] = res2['Score'].apply(lambda x: (x-min(res2['Score']))/(max(res2['Score'])-min(res2['Score'])))
+        res2.sort_values('Score',ascending=False,inplace=True)
+        res2.to_csv('data/outputs/tfidfmulti.csv',index=False)
 
 
         #autophrase top 20 multi
@@ -321,10 +321,18 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         lala.to_csv('data/outputs/multiplicationmulti.csv',index=False)
 
 
-        #combine all
+        #combine multiplication single and multi
         final = pd.concat([wala,lala]).sort_values('Score',ascending=False)
         final['Score'] = final['Score'].apply(lambda x:round(x,2))
-        final.to_csv('data/outputs/multiplicationall.csv',index=False)
+        # final.to_csv('data/outputs/multiplicationall.csv',index=False)
+        final.to_csv(output+'multiplicationall.txt',header = None, index=False, sep='\t')
+
+
+        #combine tf-idf single and multi
+        final_tfidf = pd.concat([res1, res2]).sort_values('Score',ascending=False)
+        final_tfidf['Score'] = final_tfidf['Score'].apply(lambda x:round(x,2))
+        # final_tfidf.to_csv('data/outputs/tfidfall.csv',index=False)
+        final_tfidf.to_csv(output+'tfidfall.txt',header = None, index=False, sep='\t')
 
 
         # scatterplot - frequency vs score
@@ -366,4 +374,3 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     print("Done!")
     print("Distribution graphs are in the /data/outputs folder!")
     return
-

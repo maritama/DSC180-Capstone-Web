@@ -44,27 +44,36 @@ public class FileServiceImpl implements FileService {
     }
 
 
+
     public Result fileRead(String path) {
+        // LATEST FOR DOCKER 02/22 7PM PST:
+
         String all = "";
+        String autoPhrase = "/app/phrase-mining/data/outputs/AutoPhrase.txt";
+
+        String single = "";
+        String autoPhrase_single = "/app/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
+
         String multi = "";
+        String autoPhrase_multi = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
+
         String tf = "";
+        String Tfidf = "/app/phrase-mining/data/outputs/tfidfall.txt";
+
+        String multiplication_all = "";
+        String autoPhraseTf = "/app/phrase-mining/data/outputs/multiplicationall.txt";
+
+        String seg = "";
+        String segmentation = "/app/phrase-mining/data/outputs/segmentation.txt";
+
         List<Map<String,Object>> wordCloudList = new ArrayList<>();
         Map<String, Object> data = null;
 
-//        String autoPhrase = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/AutoPhrase.txt";
-//        String autoPhraseSingle = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
-//        String autoPhraseMulti = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
 
-        // LATEST FOR DOCKER 02/22 7PM PST:
-        String autoPhrase = "/app/phrase-mining/data/outputs/AutoPhrase.txt";
-        String autoPhraseTf = "/app/phrase-mining/data/outputs/multiplicationsingle.txt";
-        String Tfidf = "/app/phrase-mining/data/outputs/tfidfsingle.txt";
-//        String autoPhraseSingle = "/app/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
-//        String autoPhraseMulti = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
 
         try {
             /*
-             ** read autophrase results
+             ** read all autophrase results
              */
             File textFile = new File(autoPhrase);
             InputStreamReader read = new InputStreamReader(
@@ -98,9 +107,24 @@ public class FileServiceImpl implements FileService {
 
 
             /*
-             ** read multiplication results
+             ** read single-phrase results
              */
-            textFile = new File(autoPhraseTf);
+            textFile = new File(autophrase_single);
+            read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
+            bufferedReader = new BufferedReader(read);
+            while((lineTxt = bufferedReader.readLine()) != null){
+                single += lineTxt + "\n";
+            }
+            bufferedReader.close();
+            read.close();
+            System.out.println(single);
+
+
+
+            /*
+             ** read multi-phrase results
+             */
+            textFile = new File(autophrase_multi);
             read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
             bufferedReader = new BufferedReader(read);
             while((lineTxt = bufferedReader.readLine()) != null){
@@ -109,7 +133,6 @@ public class FileServiceImpl implements FileService {
             bufferedReader.close();
             read.close();
             System.out.println(multi);
-
 
 
 
@@ -128,17 +151,44 @@ public class FileServiceImpl implements FileService {
 
 
 
+            /*
+             ** read multiplication results
+             */
+            textFile = new File(autoPhraseTf);
+            read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
+            bufferedReader = new BufferedReader(read);
+            while((lineTxt = bufferedReader.readLine()) != null){
+                multiplication_all += lineTxt + "\n";
+            }
+            bufferedReader.close();
+            read.close();
+            System.out.println(multiplication_all);
 
 
-//            String srcFile = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/multi_value_distribution.png";
-//            String destFile = "/Users/gandh/DSC180-Capstone-Web/web-development/src/main/webapp/img/multi_value_distribution.png";
+            
+            /*
+             ** read segmentation results
+             */
+            textFile = new File(segmentation);
+            read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
+            bufferedReader = new BufferedReader(read);
+            while((lineTxt = bufferedReader.readLine()) != null){
+                seg += lineTxt + "\n";
+            }
+            bufferedReader.close();
+            read.close();
+            System.out.println(seg);
 
+
+
+            /*
+             ** read multi quality score image
+             */
             // LATEST FOR DOCKER 02/22 7PM PST:
             String srcFile = "/app/phrase-mining/data/outputs/multi_quality_score.png";
             String destFile = "/usr/local/tomcat/webapps/python/img/multi_quality_score.png";
-
             String tempFile = path + "img/multi_quality_score.png";
-//            System.out.println(srcFile);
+
             BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
             System.out.println(bufferedInputStream==null);
             BufferedOutputStream destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
@@ -161,9 +211,9 @@ public class FileServiceImpl implements FileService {
 
 
 
-
-//            srcFile = "/Users/gandh/DSC180-Capstone-Web/phrase-mining/data/outputs/single_value_distribution.png";
-//            destFile = "/Users/gandh/DSC180-Capstone-Web/web-development/src/main/webapp/img/single_value_distribution.png";
+            /*
+             ** read comparison quality score image
+             */
 
             // LATEST FOR DOCKER 02/22 7PM PST:
             srcFile = "/app/phrase-mining/data/outputs/comparison_quality_score.png";
@@ -188,6 +238,62 @@ public class FileServiceImpl implements FileService {
             tempFileBufferedOutputStream.close();
             bufferedInputStream.close();
 
+
+
+            
+            /*
+             ** read sentiment polarity distribution image
+             */
+            srcFile = "/app/phrase-mining/data/outputs/sentiment_polarity_distribution.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/sentiment_polarity_distribution.png";
+            tempFile = path + "img/sentiment_polarity_distribution.png";
+            System.out.println(tempFile);
+
+            bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
+            destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
+            tempFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(tempFile)));
+
+            //读写流
+            while ((len = bufferedInputStream.read(buffer)) != -1)
+            {
+//                System.out.println("---------------------------------");
+                destFileBufferedOutputStream.write(buffer,0,len);
+                tempFileBufferedOutputStream.write(buffer,0,len);
+            }
+
+            //关闭流
+            destFileBufferedOutputStream.close();
+            tempFileBufferedOutputStream.close();
+            bufferedInputStream.close();
+
+
+
+            /*
+             ** read sentiment subjectivity distribution image
+             */
+            srcFile = "/app/phrase-mining/data/outputs/sentiment_subjectivity_distribution.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/sentiment_subjectivity_distribution.png";
+            tempFile = path + "img/sentiment_subjectivity_distribution.png";
+            System.out.println(tempFile);
+
+            bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
+            destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
+            tempFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(tempFile)));
+
+            //读写流
+            while ((len = bufferedInputStream.read(buffer)) != -1)
+            {
+//                System.out.println("---------------------------------");
+                destFileBufferedOutputStream.write(buffer,0,len);
+                tempFileBufferedOutputStream.write(buffer,0,len);
+            }
+
+            //关闭流
+            destFileBufferedOutputStream.close();
+            tempFileBufferedOutputStream.close();
+            bufferedInputStream.close();
+
+
         }
         catch (IOException e) {
             return new Result(1,"error",null);
@@ -195,12 +301,16 @@ public class FileServiceImpl implements FileService {
         finally {
             data = new HashMap<>();
             data.put("all", all);
-            data.put("multi",multi);
+            data.put("multiplication_all",multiplication_all);
             data.put("tf",tf);
+            data.put("seg",seg);
             data.put("wordCloud",wordCloudList);
             return new Result(0, "success", data);
         }
     }
+
+
+
     @Override
     public Result baseAdd(MultipartFile file) {
         String text = "";
