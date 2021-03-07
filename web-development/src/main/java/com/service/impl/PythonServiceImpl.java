@@ -19,10 +19,6 @@ public class PythonServiceImpl implements PythonService {
     @Override
     public void runPython() {
         System.out.println("run---------");
-        // String python = "../../DSC180A-Capstone-Project/";
-        // String cmd = "sh ../../DSC180A-Capstone-Project/running.sh";
-        // String cmd = "sh /Users/gandh/DSC180-Capstone-Web/phrase-mining/running.sh";
-
 
         // LATEST FOR DOCKER 02/22 7PM PST:
         String cmd = "bash /app/phrase-mining/running.sh";
