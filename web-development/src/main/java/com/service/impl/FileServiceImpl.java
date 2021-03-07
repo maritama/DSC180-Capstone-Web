@@ -109,7 +109,7 @@ public class FileServiceImpl implements FileService {
             /*
              ** read single-phrase results
              */
-            textFile = new File(autophrase_single);
+            textFile = new File(autoPhrase_single);
             read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
             bufferedReader = new BufferedReader(read);
             while((lineTxt = bufferedReader.readLine()) != null){
