@@ -214,6 +214,8 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     try:
         with open('data/raw/input.txt', 'r') as file:
             data = file.read().split('\n')
+        print('input.txt opened')
+
 
         #sentiment analysis
         kk = []
@@ -226,6 +228,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         plt.ylabel('Frequency')
         plt.savefig(input_path+ 'sentiment_polarity_distribution'+'.png', dpi = 300)
         plt.close()
+        print('sentiment polarity done')
 
         dd = []
         for i in data:
@@ -237,6 +240,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         plt.ylabel('Frequency')
         plt.savefig(input_path+ 'sentiment_subjectivity_distribution'+'.png', dpi = 300)
         plt.close()
+        print('sentiment sujectivity done')
 
 
         #tf-idf top 20 single
@@ -254,6 +258,8 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         res1['Score'] = res1['Score'].apply(lambda x: (x-min(res1['Score']))/(max(res1['Score'])-min(res1['Score'])))
         res1.sort_values('Score',ascending=False,inplace=True)
         res1.to_csv('data/outputs/tfidfsingle.csv',index=False)
+        print('tf-idf top 20 single done')
+
 
         #autophrase top 20 single
         ds = pd.read_csv('data/outputs/AutoPhrase_single-word.txt',sep='\t')
@@ -265,6 +271,8 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         res.index = res.Word
         ds.index = ds.Word
         ds.to_csv('data/outputs/qualitysingle.csv',index=False)
+        print('autophrase top 20 single done')
+
 
         #multiplication top 20 single
         haha = {}
@@ -277,6 +285,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         wala = pd.DataFrame({'Word':haha.keys(),'Score':haha.values()})
         wala.sort_values('Score',ascending=False,inplace=True)
         wala.to_csv('data/outputs/multiplicationsingle.csv',index=False)
+        print('multiplication top 20 single done')
 
 
         #tf-idf top 20 multi
@@ -294,6 +303,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         res2['Score'] = res2['Score'].apply(lambda x: (x-min(res2['Score']))/(max(res2['Score'])-min(res2['Score'])))
         res2.sort_values('Score',ascending=False,inplace=True)
         res2.to_csv('data/outputs/tfidfmulti.csv',index=False)
+        print('tf-idf top 20 multi done')
 
 
         #autophrase top 20 multi
@@ -306,6 +316,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         res.index = res.Word
         ds.index = ds.Word
         ds.to_csv('data/outputs/qualitymulti.csv',index=False)
+        print('autophrase top 20 multi done')
 
 
         #multiplication top 20 multi
@@ -319,6 +330,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         lala = pd.DataFrame({'Word':haha.keys(),'Score':haha.values()})
         lala.sort_values('Score',ascending=False,inplace=True)
         lala.to_csv('data/outputs/multiplicationmulti.csv',index=False)
+        print('multiplication top 20 multi done')
 
 
         #combine multiplication single and multi
@@ -326,6 +338,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         final['Score'] = final['Score'].apply(lambda x:round(x,2))
         # final.to_csv('data/outputs/multiplicationall.csv',index=False)
         final.to_csv(output+'multiplicationall.txt',header = None, index=False, sep='\t')
+        print('combine multiplication single and multi done')
 
 
         #combine tf-idf single and multi
@@ -333,7 +346,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         final_tfidf['Score'] = final_tfidf['Score'].apply(lambda x:round(x,2))
         # final_tfidf.to_csv('data/outputs/tfidfall.csv',index=False)
         final_tfidf.to_csv(output+'tfidfall.txt',header = None, index=False, sep='\t')
-
+        print('combine tf-idf single and multi done')
 
         # scatterplot - frequency vs score
         with open('data/raw/input.txt', 'r') as file_op:
