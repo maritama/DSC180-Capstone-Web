@@ -262,14 +262,9 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
 
 
         #autophrase top 20 single
-        ds = pd.read_csv('data/outputs/AutoPhrase_single-word.txt',sep='\t')
-        row = ds.columns.values
-        ds.columns = ['Score','Word']
-        ds.loc[len(df)] = row
-        ds['Score'] = ds['Score'].apply(lambda x:float(x))
-        ds.sort_values('Score',inplace=True,ascending=False)
-        res.index = res.Word
-        ds.index = ds.Word
+        ds = pd.read_csv('data/outputs/AutoPhrase_single-word.txt',sep='\t', names = ['Score', 'Phrase'])
+        ds['Score'] = ds['Score'].apply(lambda x: float(x))
+        ds = ds.set_index('Phrase')
         ds.to_csv('data/outputs/qualitysingle.txt',index=False)
         print('autophrase top 20 single done')
 
@@ -307,14 +302,9 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
 
 
         #autophrase top 20 multi
-        ds = pd.read_csv('data/outputs/AutoPhrase_multi-words.txt',sep='\t')
-        row = ds.columns.values
-        ds.columns = ['Score','Word']
-        ds.loc[len(df)] = row
-        ds['Score'] = ds['Score'].apply(lambda x:float(x))
-        ds.sort_values('Score',inplace=True,ascending=False)
-        res.index = res.Word
-        ds.index = ds.Word
+        ds = pd.read_csv('data/outputs/AutoPhrase_multi-words.txt', sep ='\t', names = ['Score', 'Phrase'])
+        ds['Score'] = ds['Score'].apply(lambda x: float(x))
+        ds = ds.set_index('Phrase')
         ds.to_csv('data/outputs/qualitymulti.txt',index=False)
         print('autophrase top 20 multi done')
 
@@ -336,7 +326,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         #combine multiplication single and multi
         final = pd.concat([wala,lala]).sort_values('Score',ascending=False)
         final['Score'] = final['Score'].apply(lambda x:round(x,2))
-        # final.to_csv('data/outputs/multiplicationall.csv',index=False)
+        # final.to_csv('data/outputs/multiplicationall.txt',index=False)
         final.to_csv(output+'multiplicationall.txt',header = None, index=False, sep='\t')
         print('combine multiplication single and multi done')
 
@@ -344,7 +334,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         #combine tf-idf single and multi
         final_tfidf = pd.concat([res1, res2]).sort_values('Score',ascending=False)
         final_tfidf['Score'] = final_tfidf['Score'].apply(lambda x:round(x,2))
-        # final_tfidf.to_csv('data/outputs/tfidfall.csv',index=False)
+        # final_tfidf.to_csv('data/outputs/tfidfall.txt',index=False)
         final_tfidf.to_csv(output+'tfidfall.txt',header = None, index=False, sep='\t')
         print('combine tf-idf single and multi done')
 
@@ -356,7 +346,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         word_count = Counter(word_list)
         single_top_20 = data_kk_single[:20]
         single_top_20['frequency'] = single_top_20.apply(lambda row: word_count[row['phrase']], axis = 1)
-        single_top_20.to_csv('data/outputs/singletop20.csv', index=False)
+        single_top_20.to_csv('data/outputs/singletop20.txt', index=False)
 
         plt.title('Word Frequency vs AutoPhrase Score')
         plt.xlabel('Score')
