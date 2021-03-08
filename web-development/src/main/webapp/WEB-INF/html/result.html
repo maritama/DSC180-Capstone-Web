@@ -29,21 +29,21 @@
             type: "post",
             success: function (result) {
                 console.log(result);
-                $("#single").val(result.data.single);
-                $("#multi").val(result.data.multi);
+                // $("#single").val(result.data.single);
+                // $("#multi").val(result.data.multi);
                 $("#all").val(result.data.all);
                 $("#tf").val(result.data.tf);
                 $("#multiplication-all").val(result.data.multiplication_all);
                 $("#seg").val(result.data.seg);
+                $("#description").val(result.data.description);
 
                 console.log(result.data.wordCloud)
 
-                $("#img1").attr('src',"img/box_plot_word_length.png");
+                $("#img1").attr('src',"img/tokens_freq.png");
                 $("#img2").attr('src',"img/tokens_top20_words.png");
                 $("#img3").attr('src',"img/sentiment_polarity_distribution.png");
                 $("#img4").attr('src',"img/sentiment_subjectivity_distribution.png");
-                $("#img5").attr('src',"img/single_quality_score.png");
-                $("#img6").attr('src',"img/multi_quality_score.png");
+                $("#img5").attr('src',"img/word_distribution.png");
                 $("#img7").attr('src',"img/comparison_quality_score.png");
                 $("#img8").attr('src',"img/freq_score_plot.png");
 
@@ -121,19 +121,176 @@
             </h1>
         </div>
     </div>
-    
 
-    <!-- 1. boxplot_word_len + token_top_20 -->
+    <!-- description -->
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <textarea cols="10" rows="5x" id="description" disabled="disabled" class="layui-textarea">
+            </textarea>
+        </div>
+    </div>
+
+    <div class="layui-row">
+        <div class="layui-col-md6 layui-col-md-offset3">
+            <p style="color: grey;">
+                explan description
+            </p>
+        </div>
+    </div>
+
+    <!-- dist -->
     <div class="layui-row">
         <div class="layui-col-md6">
-            <div class="layui-col-md6" >
+                <img id = "img5"/>
+        </div>
+        <div class="layui-col-md6" style="margin-top: 60px">
+                <p>
+                    explan
+                </p>
+        </div>
+    </div>
+
+    <!-- 1. token freq -->
+    <div class="layui-row">
+        <div class="layui-col-md6">
                 <img id = "img1"/>
+        </div>
+        <div class="layui-col-md6" style="margin-top: 60px">
+                <p>
+                    explan
+                </p>
+        </div>
+    </div>
+
+
+    <!-- 2. top 20 -->
+    <div class="layui-row">
+        <div class="layui-col-md6">
+                <img id = "img2"/>
+        </div>
+        <div class="layui-col-md6" style="margin-top: 60px">
+                <p>
+                    explan20
+                </p>
+        </div>
+    </div>
+
+    <!-- auto -->
+    <div class="layui-row">
+        <div class="layui-col-md6 layui-col-md-offset3">
+            <h1 style="color: grey;">
+                AutoPhrase Analysis Results
+            </h1>
+        </div>
+    </div>
+
+
+    <!-- 8. segmentation.txt -->
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <h4> segementation text </h4>
+            <textarea cols="40" rows="20x" id="seg" disabled="disabled" class="layui-textarea">
+            </textarea>
+        </div>
+
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-md6 layui-col-md-offset3">
+            <p style="color: grey;">
+                explain segmentation
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 8. tfidfall.txt  -->
+    <div class="layui-row">
+        <div class="layui-col-md6">
+            <h4> tf-idf</h4>
+            <textarea cols="20" rows="20" id="tf" disabled="disabled" class="layui-textarea">
+            </textarea>
+        </div>
+            <div class="layui-col-md6" style="margin-top: 60px">
+                <p>
+                    explan tf
+                </p>
+            </div>
+    </div>
+
+
+    <div class="layui-row">
+        <div class="layui-col-md6">
+            <h4> auto all </h4>
+            <textarea cols="20" rows="20" id="all" disabled="disabled" class="layui-textarea">
+            </textarea>
+        </div>
+            <div class="layui-col-md6" style="margin-top: 60px">
+                <p>
+                    explan auto
+                </p>
+            </div>
+    </div>
+
+    <div class="layui-row">
+        <div class="layui-col-md6">
+            <h4> multi all </h4>
+            <textarea cols="20" rows="20" id="multiplication-all" disabled="disabled" class="layui-textarea">
+            </textarea>
+        </div>
+            <div class="layui-col-md6" style="margin-top: 60px">
+                <p>
+                    explan multi
+                </p>
+            </div>
+    </div>
+
+    <!-- 7. freq vs score -->
+    <div class="layui-row">
+        <div class="layui-col-md6">
+            <h4> auto top 20 </h4>
+            <img id = "img8"/>
+        </div>
+            <div class="layui-col-md6" style="margin-top: 60px">
+                <p>
+                    explan top 20 auto
+                </p>
+            </div>
+    </div>
+
+
+    <!-- Wordcloud -->
+    <div class="layui-row">
+        <div class="layui-col-md6">
+            <h4> Word Cloud </h4>
+            <div id = "wordCloud" style="width: 600px; height: 400px;">
             </div>
         </div>
+        <div class="layui-col-md6" style="margin-top: 60px">
+                <p>
+                    explan word cloud
+                </p>
+        </div>
+    </div>
+
+    <!-- 7. compare distr -->
+    <div class="layui-row">
         <div class="layui-col-md6">
-            <div class="layui-col-md6" >
-                <img id = "img2"/>
-            </div>
+            <h4> compare </h4>
+            <img id = "img7"/>
+        </div>
+        <div class="layui-col-md6" style="margin-top: 60px">
+            <p>
+                explan compare
+            </p>
+        </div>
+    </div>
+
+    <!-- seti -->
+    <div class="layui-row">
+        <div class="layui-col-md6 layui-col-md-offset3">
+            <h1 style="color: grey;">
+                Sentiment Analysis Results
+            </h1>
         </div>
     </div>
 
@@ -141,155 +298,29 @@
     <!-- 2. sent_pol + sent_sub -->
     <div class="layui-row">
         <div class="layui-col-md6">
-            <div class="layui-col-md6" >
                 <img id = "img3"/>
-            </div>
         </div>
-        <div class="layui-col-md6">
-            <div class="layui-col-md6" >
-                <img id = "img4"/>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Results -->
-    <div class="layui-row">
-        <div class="layui-col-md6 layui-col-md-offset3">
-            <h1 style="color: grey;">
-                Results
-            </h1>
-        </div>
-    </div>
-
-    
-    <!-- Wordcloud -->
-    <div class="layui-row">
-        <div class="layui-col-md6 layui-col-md-offset3">
-            <div id = "wordCloud" style="width: 600px; height: 400px;">
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 4. single.txt + img -->
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="single" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-        <div class="layui-col-md6">
-            <div class="layui-col-md6" >
-                <img id = "img5"/>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 5. multi.txt + img -->
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="multi" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-        <div class="layui-col-md6">
-            <div class="layui-col-md6" >
-                <img id = "img6"/>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 6. all.txt + img -->
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="all" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-        <div class="layui-col-md6">
-            <div class="layui-col-md6" >
-                <img id = "img7"/>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 7. freq vs score -->
-    <div class="layui-row">
-        <div class="layui-col-md6 layui-col-md-offset3">
-            <div class="layui-col-md6" >
-                <img id = "img8"/>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 8. tfidfall.txt + multiplicationall.txt -->
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="tf" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-        <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="multiplication-all" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-    </div>
-
-
-    <!-- 8. segmentation.txt -->
-    <div class="layui-row">
-        <div class="layui-col-md6 layui-col-md-offset3">
-            <textarea cols="20" rows="20" id="seg" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-    </div>
-
-
-
-    
-    
-    
-    <!-- <div class="layui-row">
-        <div class="layui-col-md6 layui-col-md-offset3">
-            <h1 style="color: grey;">
-                AutoPhrase Result
-            </h1>
+        <div class="layui-col-md6" style="margin-top: 60px">
+            <p>
+                explan set
+            </p>
         </div>
     </div>
 
     <div class="layui-row">
         <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="autoPhrase-all" disabled="disabled" class="layui-textarea">
-            </textarea>
+            <img id = "img4"/>
         </div>
-        <div class="layui-col-md6">
-            <div id = "wordCloud" style="width: 600px; height: 400px;">
-            </div>
-        </div>
-    </div>
-
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="autoPhrase-single" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-        <div class="layui-col-md6">
-            <div class="layui-col-md6" >
-                <img id = "img1"/>
-            </div>
+        <div class="layui-col-md6" style="margin-top: 60px">
+            <p>
+                    explan set
+            </p>
         </div>
     </div>
 
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="autoPhrase-multi" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-        <div class="layui-col-md6" >
-            <img id = "img2"/>
-        </div>
-    </div> -->
+
+
+
 
 </div>
 </body>
