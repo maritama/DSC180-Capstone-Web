@@ -22,7 +22,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     plt.xlabel('Probability of Quality Word/Phrase')
     plt.ylabel('Frequency')
     plt.legend(loc = 'upper right')
-    plt.savefig(input_path + 'single_quality_score'+'.png', dpi = 300)
+    plt.savefig(input_path + 'single_quality_score'+'.png')
     plt.close()
 
     #multi-word distribution
@@ -32,7 +32,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     plt.xlabel('Probability of Quality Word/Phrase')
     plt.ylabel('Frequency')
     plt.legend(loc = 'upper right')
-    plt.savefig(input_path + 'multi_quality_score' + '.png', dpi = 300)
+    plt.savefig(input_path + 'multi_quality_score' + '.png')
     plt.close()
 
     plt.figure()
@@ -42,7 +42,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
     plt.xlabel('Probability of Quality Word/Phrase')
     plt.ylabel('Frequency')
     plt.legend(loc = 'upper right')
-    plt.savefig(input_path + 'comparison_quality_score' + '.png', dpi = 300)
+    plt.savefig(input_path + 'comparison_quality_score' + '.png')
     plt.close()
 
 
@@ -226,7 +226,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         plt.title('Sentiment Polarity Distribution')
         plt.xlabel('Polarity Score')
         plt.ylabel('Frequency')
-        plt.savefig(input_path+ 'sentiment_polarity_distribution'+'.png', dpi = 300)
+        plt.savefig(input_path+ 'sentiment_polarity_distribution'+'.png')
         plt.close()
         print('sentiment polarity done')
 
@@ -238,7 +238,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         plt.title('Sentiment Subjectivity Distribution')
         plt.xlabel('Subjectivity Score')
         plt.ylabel('Frequency')
-        plt.savefig(input_path+ 'sentiment_subjectivity_distribution'+'.png', dpi = 300)
+        plt.savefig(input_path+ 'sentiment_subjectivity_distribution'+'.png')
         plt.close()
         print('sentiment sujectivity done')
 
@@ -257,7 +257,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         res1 = pd.DataFrame({'Word':dict(counter).keys(),'Score':dict(counter).values()})
         res1['Score'] = res1['Score'].apply(lambda x: (x-min(res1['Score']))/(max(res1['Score'])-min(res1['Score'])))
         res1.sort_values('Score',ascending=False,inplace=True)
-        res1.to_csv('data/outputs/tfidfsingle.csv',index=False)
+        res1.to_csv('data/outputs/tfidfsingle.txt',index=False)
         print('tf-idf top 20 single done')
 
 
@@ -270,7 +270,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         ds.sort_values('Score',inplace=True,ascending=False)
         res.index = res.Word
         ds.index = ds.Word
-        ds.to_csv('data/outputs/qualitysingle.csv',index=False)
+        ds.to_csv('data/outputs/qualitysingle.txt',index=False)
         print('autophrase top 20 single done')
 
 
@@ -284,7 +284,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
                 pass
         wala = pd.DataFrame({'Word':haha.keys(),'Score':haha.values()})
         wala.sort_values('Score',ascending=False,inplace=True)
-        wala.to_csv('data/outputs/multiplicationsingle.csv',index=False)
+        wala.to_csv('data/outputs/multiplicationsingle.txt',index=False)
         print('multiplication top 20 single done')
 
 
@@ -302,7 +302,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         res2 = pd.DataFrame({'Word':dict(counter).keys(),'Score':dict(counter).values()})
         res2['Score'] = res2['Score'].apply(lambda x: (x-min(res2['Score']))/(max(res2['Score'])-min(res2['Score'])))
         res2.sort_values('Score',ascending=False,inplace=True)
-        res2.to_csv('data/outputs/tfidfmulti.csv',index=False)
+        res2.to_csv('data/outputs/tfidfmulti.txt',index=False)
         print('tf-idf top 20 multi done')
 
 
@@ -315,7 +315,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         ds.sort_values('Score',inplace=True,ascending=False)
         res.index = res.Word
         ds.index = ds.Word
-        ds.to_csv('data/outputs/qualitymulti.csv',index=False)
+        ds.to_csv('data/outputs/qualitymulti.txt',index=False)
         print('autophrase top 20 multi done')
 
 
@@ -329,7 +329,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
                 pass
         lala = pd.DataFrame({'Word':haha.keys(),'Score':haha.values()})
         lala.sort_values('Score',ascending=False,inplace=True)
-        lala.to_csv('data/outputs/multiplicationmulti.csv',index=False)
+        lala.to_csv('data/outputs/multiplicationmulti.txt',index=False)
         print('multiplication top 20 multi done')
 
 
@@ -377,7 +377,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
                     edgecolor='w',
                     alpha = 0.5)
 
-        plt.savefig(input_path + 'freq_score_plot' + '.png', dpi = 300)
+        plt.savefig(input_path + 'freq_score_plot' + '.png')
         plt.close()
 
     except:

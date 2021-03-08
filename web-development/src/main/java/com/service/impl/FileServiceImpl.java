@@ -75,7 +75,7 @@ public class FileServiceImpl implements FileService {
             /*
              ** read all autophrase results
              */
-            File textFile = new File(autoPhrase);
+            File textFile = new File(autoPhraseTf);
             InputStreamReader read = new InputStreamReader(
                     new FileInputStream(textFile),"utf-8");
             BufferedReader bufferedReader = new BufferedReader(read);
