@@ -105,9 +105,12 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
 
         #multiplication top 20 single
         haha = {}
-        for key in ds.Score.to_dict():
+        ds_dict = ds.Score.to_dict()
+        res1_dict = res1.Score.to_dict()
+
+        for key in ds_dict:
             try:
-                value = (ds.Score.to_dict()[key] * res.Score.to_dict()[key])
+                value = ds_dict[key] * res1_dict[key]
                 haha[key] = value
             except:
                 pass
@@ -145,12 +148,16 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
 
         #multiplication top 20 multi
         haha = {}
-        for key in ds.Score.to_dict():
+        ds_dict = ds.Score.to_dict()
+        res1_dict = res1.Score.to_dict()
+
+        for key in ds_dict:
             try:
-                value = (ds.Score.to_dict()[key] * res.Score.to_dict()[key])
+                value = ds_dict[key] * res1_dict[key]
                 haha[key] = value
             except:
                 pass
+
         lala = pd.DataFrame({'Word':haha.keys(),'Score':haha.values()})
         lala.sort_values('Score',ascending=False,inplace=True)
         lala.to_csv('data/outputs/multiplicationmulti.txt',index=False)
@@ -179,9 +186,13 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         print('last file reading done')
 
         word_list = re.findall(r'[A-Za-z]+[0-9]?[+-]*', d)
+        print('ERROR 1')
         word_count = Counter(word_list)
+        print('ERROR 2')
         single_top_20 = data_kk_single[:20]
+        print('ERROR 3')
         single_top_20['frequency'] = single_top_20.apply(lambda row: word_count[row['phrase']], axis = 1)
+        print('ERROR 4')
         single_top_20.to_csv('data/outputs/singletop20.txt', index=False)
         print('frequency vs score dataframe done')
 

@@ -97,7 +97,8 @@ public class FileServiceImpl implements FileService {
             /*
              ** read all autophrase results
              */
-            File textFile = new File(autoPhraseTf);
+
+            File textFile = new File(autoPhrase);
             InputStreamReader read = new InputStreamReader(
                     new FileInputStream(textFile),"utf-8");
             BufferedReader bufferedReader = new BufferedReader(read);
@@ -105,31 +106,77 @@ public class FileServiceImpl implements FileService {
             int linNum = 0;
             String lineTxt = null;
             Map<String,Object> wordCloud = null;
-            System.out.println("---------");
             while((lineTxt = bufferedReader.readLine()) != null){
-//                System.out.println("1");
-                if (linNum == 0){
-                    linNum ++;
-                    continue;
-                }
                 all += lineTxt + "\n";
-//                System.out.println("2");
-                if(linNum++ <21) {
-                    String[] wordAndValue = lineTxt.split(",");
+                if(linNum++ <20) {
+                    String[] wordAndValue = lineTxt.split("\t");
                     wordCloud = new HashMap<>();
-                    wordCloud.put("name", wordAndValue[0]);
-                    wordCloud.put("value", new Double(wordAndValue[1]));
+                    wordCloud.put("name", wordAndValue[1]);
+                    wordCloud.put("value", new parseDouble(wordAndValue[0]));
                     wordCloudList.add(wordCloud);
                 }
                 else {
-                    String[] wordAndValue = lineTxt.split(",");
+                    String[] wordAndValue = lineTxt.split("\t");
                     wordCloud = new HashMap<>();
-                    wordCloud.put("name", wordAndValue[0]);
-                    wordCloud.put("value", new Double(wordAndValue[1]));
+                    wordCloud.put("name", wordAndValue[1]);
+                    wordCloud.put("value", new parseDouble(wordAndValue[0]));
                     wordCloudList.add(wordCloud);
                 }
-//                System.out.println(all);
-//                System.out.println("11111111");
+            }
+            bufferedReader.close();
+            read.close();
+            System.out.println(all);
+
+
+
+//             File textFile = new File(autoPhraseTf);
+//             InputStreamReader read = new InputStreamReader(
+//                     new FileInputStream(textFile),"utf-8");
+//             BufferedReader bufferedReader = new BufferedReader(read);
+
+//             int linNum = 0;
+//             String lineTxt = null;
+//             Map<String,Object> wordCloud = null;
+//             System.out.println("---------");
+//             while((lineTxt = bufferedReader.readLine()) != null){
+// //                System.out.println("1");
+//                 if (linNum == 0){
+//                     linNum ++;
+//                     continue;
+//                 }
+//                 all += lineTxt + "\n";
+// //                System.out.println("2");
+//                 if(linNum++ <21) {
+//                     String[] wordAndValue = lineTxt.split(",");
+//                     wordCloud = new HashMap<>();
+//                     wordCloud.put("name", wordAndValue[0]);
+//                     wordCloud.put("value", new parseDouble(wordAndValue[1]));
+//                     wordCloudList.add(wordCloud);
+//                 }
+//                 else {
+//                     String[] wordAndValue = lineTxt.split(",");
+//                     wordCloud = new HashMap<>();
+//                     wordCloud.put("name", wordAndValue[0]);
+//                     wordCloud.put("value", new parseDouble(wordAndValue[1]));
+//                     wordCloudList.add(wordCloud);
+//                 }
+// //                System.out.println(all);
+// //                System.out.println("11111111");
+//             }
+//             bufferedReader.close();
+//             read.close();
+// //            System.out.println(all);
+
+
+
+            /*
+             ** read autophrase all
+             */
+            textFile = new File(autoPhrase);
+            read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
+            bufferedReader = new BufferedReader(read);
+            while((lineTxt = bufferedReader.readLine()) != null){
+                all += lineTxt + "\n";
             }
             bufferedReader.close();
             read.close();
@@ -149,21 +196,6 @@ public class FileServiceImpl implements FileService {
             bufferedReader.close();
             read.close();
 //            System.out.println(description);
-
-
-
-            /*
-             ** read autophrase all
-             */
-            textFile = new File(autoPhrase);
-            read = new InputStreamReader(new FileInputStream(textFile),"utf-8");
-            bufferedReader = new BufferedReader(read);
-            while((lineTxt = bufferedReader.readLine()) != null){
-                all += lineTxt + "\n";
-            }
-            bufferedReader.close();
-            read.close();
-//            System.out.println(all);
 
 
 
