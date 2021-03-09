@@ -186,13 +186,11 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         print('last file reading done')
 
         word_list = re.findall(r'[A-Za-z]+[0-9]?[+-]*', d)
-        print('ERROR 1')
         word_count = Counter(word_list)
-        print('ERROR 2')
         single_top_20 = data_kk_single[:20]
-        print('ERROR 3')
-        single_top_20['frequency'] = single_top_20.apply(lambda row: word_count[row['phrase']], axis = 1)
-        print('ERROR 4')
+        # single_top_20['frequency'] = single_top_20.apply(lambda row: word_count[row['phrase']], axis = 1)
+        single_top_20['frequency'] = single_top_20['phrase'].apply(lambda elem: word_count[elem])
+        print('ERROR HERE')
         single_top_20.to_csv('data/outputs/singletop20.txt', index=False)
         print('frequency vs score dataframe done')
 

@@ -180,7 +180,7 @@ public class FileServiceImpl implements FileService {
             }
             bufferedReader.close();
             read.close();
-//            System.out.println(all);
+            System.out.println(all);
 
 
 
@@ -195,7 +195,7 @@ public class FileServiceImpl implements FileService {
             }
             bufferedReader.close();
             read.close();
-//            System.out.println(description);
+            System.out.println(description);
 
 
 
@@ -225,7 +225,7 @@ public class FileServiceImpl implements FileService {
             }
             bufferedReader.close();
             read.close();
-//            System.out.println(multiplication_all);
+            System.out.println(multiplication_all);
 
 
             
@@ -240,16 +240,16 @@ public class FileServiceImpl implements FileService {
             }
             bufferedReader.close();
             read.close();
-//            System.out.println(seg);
+            System.out.println(seg);
 
 
 
             /*
              ** read word distribution
              */
-           String srcFile = "/app/phrase-mining/data/outputs/eda/word_distribution.png";
-           String destFile = "/usr/local/tomcat/webapps/python/img/word_distribution.png";
-           String tempFile = path + "img/word_distribution.png";
+            String srcFile = "/app/phrase-mining/data/outputs/eda/word_distribution.png";
+            String destFile = "/usr/local/tomcat/webapps/python/img/word_distribution.png";
+            String tempFile = path + "img/word_distribution.png";
 
             // String srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/word_distribution.png";
             // String destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/word_distribution.png";
