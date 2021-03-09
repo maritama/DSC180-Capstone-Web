@@ -112,8 +112,12 @@
 
 
 <div class="layui-container">
-    
-    <!-- EDA -->
+
+    <!-- SECTION BREAK-->
+    <br>
+
+
+    <!-- HEADER - EDA -->
     <div class="layui-row">
         <div class="layui-col-md6 layui-col-md-offset3">
             <h1 style="color: grey;">
@@ -122,60 +126,61 @@
         </div>
     </div>
 
-    <!-- description -->
+
+    <!-- TEXTBOX - description -->
     <div class="layui-row">
         <div class="layui-col-md12">
-            <textarea cols="10" rows="5x" id="description" disabled="disabled" class="layui-textarea">
+            <textarea cols="10" rows="3x" id="description" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify">
             </textarea>
         </div>
     </div>
+    <br>
 
-    <div class="layui-row">
-        <div class="layui-col-md6 layui-col-md-offset3">
-            <p style="color: grey;">
-                explan description
-            </p>
-        </div>
-    </div>
 
-    <!-- dist -->
+    <!-- GRAPH - length distribution -->
     <div class="layui-row">
         <div class="layui-col-md6">
                 <img id = "img5"/>
         </div>
-        <div class="layui-col-md6" style="margin-top: 60px">
-                <p>
-                    explan
-                </p>
+        <div class="layui-col-md6" style="margin: auto; width: 80%">
+            <p style = "font-size: 22px">
+                This graph shows the distribution of sentence length in the input text corpus
+            </p>
         </div>
     </div>
 
-    <!-- 1. token freq -->
+
+    <!-- GRAPH - token frequency -->
     <div class="layui-row">
         <div class="layui-col-md6">
                 <img id = "img1"/>
         </div>
-        <div class="layui-col-md6" style="margin-top: 60px">
-                <p>
-                    explan
-                </p>
+        <div class="layui-col-md6" style="margin: auto; width: 80%">
+            <p style = "font-size: 22px">
+                Obtained from the tokenizer model, the graph here shows the distribution of token frequency
+            </p>
         </div>
     </div>
 
 
-    <!-- 2. top 20 -->
+    <!-- GRAPH - tokenization -->
     <div class="layui-row">
         <div class="layui-col-md6">
                 <img id = "img2"/>
         </div>
-        <div class="layui-col-md6" style="margin-top: 60px">
-                <p>
-                    explan20
-                </p>
+        <div class="layui-col-md6" style="margin: auto; width: 80%">
+            <p style = "font-size: 22px">
+                These are the top 20 words obtained upon tokenization
+            </p>
         </div>
     </div>
 
-    <!-- auto -->
+
+    <!-- SECTION BREAK-->
+    <br>
+
+
+    <!-- HEADER - results -->
     <div class="layui-row">
         <div class="layui-col-md6 layui-col-md-offset3">
             <h1 style="color: grey;">
@@ -185,107 +190,122 @@
     </div>
 
 
-    <!-- 8. segmentation.txt -->
+    <!-- GRAPH - word cloud -->
     <div class="layui-row">
-        <div class="layui-col-md12">
-            <h4> segementation text </h4>
-            <textarea cols="40" rows="20x" id="seg" disabled="disabled" class="layui-textarea">
-            </textarea>
+        <div class="layui-col-md6 layui-col-md-offset3">
+            <div id = "wordCloud" style="width: 900px; height: 600px;">
+            </div>
         </div>
-
     </div>
+
     <div class="layui-row">
         <div class="layui-col-md6 layui-col-md-offset3">
             <p style="color: grey;">
-                explain segmentation
+                The word cloud above illustrates the most common and relevant words in your input file. The larger the word, the higher its frequency and importance.
             </p>
         </div>
     </div>
+    <br>
 
 
-    <!-- 8. tfidfall.txt  -->
+    <!-- TABLE - autophrase -->
     <div class="layui-row">
+        <div class="layui-col-md6" style="margin: auto; width: 80%; word-wrap: normal">
+            <p style = "font-size: 22px">
+                The main result from the AutoPhrase algorithm, this table shows scores of single- and multi-word phrases with their corresponding phrase quality scores.
+            </p>
+        </div>
         <div class="layui-col-md6">
-            <h4> tf-idf</h4>
-            <textarea cols="20" rows="20" id="tf" disabled="disabled" class="layui-textarea">
+            <textarea cols="20" rows="20" id="all" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify">
             </textarea>
         </div>
-            <div class="layui-col-md6" style="margin-top: 60px">
-                <p>
-                    explan tf
-                </p>
-            </div>
     </div>
+    <br>
 
 
+    <!-- GRAPH - single vs multi-word distribution -->
     <div class="layui-row">
-        <div class="layui-col-md6">
-            <h4> auto all </h4>
-            <textarea cols="20" rows="20" id="all" disabled="disabled" class="layui-textarea">
-            </textarea>
+        <div class="layui-col-md6" style="margin: auto; width: 80%">
+            <p style = "font-size: 22px">
+                A comparison between the quality score distributions of single-word and multi-word phrases 
+            </p>
         </div>
-            <div class="layui-col-md6" style="margin-top: 60px">
-                <p>
-                    explan auto
-                </p>
-            </div>
-    </div>
-
-    <div class="layui-row">
         <div class="layui-col-md6">
-            <h4> multi all </h4>
-            <textarea cols="20" rows="20" id="multiplication-all" disabled="disabled" class="layui-textarea">
-            </textarea>
-        </div>
-            <div class="layui-col-md6" style="margin-top: 60px">
-                <p>
-                    explan multi
-                </p>
-            </div>
-    </div>
-
-    <!-- 7. freq vs score -->
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <h4> auto top 20 </h4>
-            <img id = "img8"/>
-        </div>
-            <div class="layui-col-md6" style="margin-top: 60px">
-                <p>
-                    explan top 20 auto
-                </p>
-            </div>
-    </div>
-
-
-    <!-- Wordcloud -->
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <h4> Word Cloud </h4>
-            <div id = "wordCloud" style="width: 600px; height: 400px;">
-            </div>
-        </div>
-        <div class="layui-col-md6" style="margin-top: 60px">
-                <p>
-                    explan word cloud
-                </p>
-        </div>
-    </div>
-
-    <!-- 7. compare distr -->
-    <div class="layui-row">
-        <div class="layui-col-md6">
-            <h4> compare </h4>
             <img id = "img7"/>
         </div>
-        <div class="layui-col-md6" style="margin-top: 60px">
-            <p>
-                explan compare
+    </div>
+
+
+    <!-- GRAPH - frequency vs score scatterplot -->
+    <div class="layui-row">
+        <div class="layui-col-md6" style="margin: auto; width: 80%">
+            <p style = "font-size: 22px">
+                This simple scatter plot shows the top 20 unigrams (based on quality score) with respect to their frequency in the text corpus.
+            </p>
+        </div>
+        <div class="layui-col-md6">
+            <img id = "img8"/>
+        </div>
+    </div>
+
+
+    <!-- TABLE - tfidf all  -->
+    <div class="layui-row">
+        <div class="layui-col-md6" style="margin: auto; width: 80%; word-wrap: normal">
+            <p style = "font-size: 22px">
+                tf-idf, an information retrieval and text mining method, evaluates how relevant a word is in a corpus. 
+                The tf–idf value increases proportionally to the number of times a word appears in the document and is offset by the number of documents in the corpus that contain the word, which helps to adjust for the fact that some words appear more frequently in general. 
+                For example, words such as “that”, “with”, “to” (also known as stop words) are ignored, since they are meaningless in the context of the entire corpus.
+                This table shows phrases or words with their corresponding tf-idf values, in decreasing order.
+            </p>
+        </div>
+        <div class="layui-col-md6">
+            <h4> tf-idf (term frequency - inverse document frequency) </h4>
+            <textarea cols="20" rows="20" id="tf" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify" >
+            </textarea>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- TABLE - multiplication all -->
+    <div class="layui-row">
+        <div class="layui-col-md6" style="margin: auto; width: 80%; word-wrap: normal">
+            <p style = "font-size: 22px">
+                This list is a 
+            </p>
+        </div>
+        <div class="layui-col-md6">
+            <textarea cols="20" rows="20" id="multiplication-all" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify">
+            </textarea>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- TEXTBOX - segmentation -->
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <h4> Segmentation text </h4>
+            <textarea cols="40" rows="20x" id="seg" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify">
+            </textarea>
+        </div>
+    </div>
+
+    <div class="layui-row">
+        <div class="layui-col-md6 layui-col-md-offset3">
+            <p style="color: grey;">
+                EXPLAIN SEGMENTATION
             </p>
         </div>
     </div>
 
-    <!-- seti -->
+
+    <!-- SECTION BREAK-->
+    <br>
+
+
+    <!-- HEADER - sentiment analysis -->
     <div class="layui-row">
         <div class="layui-col-md6 layui-col-md-offset3">
             <h1 style="color: grey;">
@@ -295,34 +315,33 @@
     </div>
 
 
-    <!-- 2. sent_pol + sent_sub -->
+    <!-- GRAPH - sent_pol -->
     <div class="layui-row">
         <div class="layui-col-md6">
                 <img id = "img3"/>
         </div>
-        <div class="layui-col-md6" style="margin-top: 60px">
-            <p>
-                explan set
+        <div class="layui-col-md6" style="margin: auto; width: 80%">
+            <p style = "font-size: 22px">
+                EXPLAIN SENTIMENT POLARITY GRAPH
             </p>
         </div>
     </div>
 
+
+    <!-- GRAPH - sent_sub -->
     <div class="layui-row">
         <div class="layui-col-md6">
             <img id = "img4"/>
         </div>
-        <div class="layui-col-md6" style="margin-top: 60px">
-            <p>
-                    explan set
+        <div class="layui-col-md6" style="margin: auto; width: 80%">
+            <p style = "font-size: 22px">
+                EXPLAIN SENTIMENT SUBJECTIVITY GRAPH
             </p>
         </div>
     </div>
 
-
-
-
+    <br>
 
 </div>
 </body>
-
 </html>

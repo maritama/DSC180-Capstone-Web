@@ -13,10 +13,10 @@ def do_eda(out_dir,input_path,file):
         data_kk['length_sentnece'] = data_kk['sentence'].apply(lambda x: len(str(x).split('.'))-1)
 
         #input words distribution for each sentence
-        plt.semilogy(data_kk['length'],label='words length', color='purple')
-        plt.title('Input Words Length Distribution for Each Line')
-        plt.xlabel('Each Line')
-        plt.ylabel('Length')
+        plt.semilogy(data_kk['length'],label='words length', color='steelblue')
+        plt.title('Distribution of Word Lengths')
+        plt.xlabel('Line Number')
+        plt.ylabel('Log-Scaled Length')
         plt.legend(loc = 'upper right')
         plt.savefig(out_dir+'word_distribution.png')
         plt.close()
@@ -35,7 +35,7 @@ def do_eda(out_dir,input_path,file):
         percent_kk = mean_kk+std_kk*3
         cleaned_kk = data_kk[data_kk['length']<percent_kk]
         plt.figure()
-        plt.hist(cleaned_kk['length'])  
+        plt.hist(cleaned_kk['length'])
         plt.title('Cleaned Distribution '+file)
         plt.xlabel('Length Distribution')
         plt.ylabel('Frequency')
@@ -48,28 +48,28 @@ def do_eda(out_dir,input_path,file):
         plt.figure()
         token['words'] = token.index
         token = token.reset_index(drop = True)
-        plt.scatter(x = list(token[:20]['count']),
-                            y =list(token[:20]['words']),
-                            linewidths = 2,
-                            edgecolor='b',
-                            alpha = 0.5)
-        plt.title('Tokenization Top20 Words Frequency')
-        plt.xlabel('Frequency')
-        plt.ylabel('Words')
+        plt.scatter(x = list(token[:20]['words']),
+                    y = list(token[:20]['count']),
+                    linewidths = 2,
+                    edgecolor='b',
+                    alpha = 0.5)
+        plt.title('Distribution of Tokenized Words')
+        plt.xlabel('Words')
+        plt.ylabel('Frequency')
         plt.savefig(out_dir+'tokens_top20_words.png')
         plt.close()
-        
+
         token_arr_kk = list(tokens_kk.values())
         plt.figure()
-        plt.semilogy(list(tokens_kk.values()),color = 'pink')
-        plt.title('tokens frequency in descending order' )
-        plt.xlabel('tokens index')
-        plt.ylabel('Frequency')
+        plt.semilogy(list(tokens_kk.values()),color = 'purple')
+        plt.title('Token Frequency' )
+        plt.xlabel('Token index')
+        plt.ylabel('Log-Scaled Frequency')
         plt.savefig(out_dir+'tokens_freq.png')
         plt.close()
-        
+
         num_rare_kk = sum(i < 5 for i in token_arr_kk)
-        strs_kk = 'There are '+ str(data_kk['length_sentnece'].sum())+' sentences in this input text file. '+'The mean of the input text word length'+ ' is around ' + str(round(mean_kk)) + ' for each sentence with the standard deviation ' + str(round(std_kk)) + '. Number of Rare tokens is ' + str(num_rare_kk) +' (which defined as the the number of tokens is less than 5).'
+        strs_kk = 'There are ' + str(data_kk['length_sentnece'].sum()) + ' sentences in this input text file. ' + 'On average, there are ' + str(round(mean_kk)) + ' words per sentence, with a standard deviation of ' + str(round(std_kk)) + ' words per sentence. ' + 'We also found ' + str(num_rare_kk) + ' rare token(s) (tokens occurring less than 5 times).'
         f = open(out_dir + "description.txt", "a")
         f.write(strs_kk)
         f.close()
@@ -104,7 +104,7 @@ def do_eda(out_dir,input_path,file):
 
         prev = 0
         output = Counter({})
-        print('Tokenizing..this may take more than 10 mins')
+        print('Tokenizing...this may take more than 10 minutes!')
         for i in tqdm((np.arange(10000,2773022,10000).tolist()+[2773022])):
             tokens = data['sentence'][prev:i].str.split(expand=True).stack().value_counts().to_dict()
             output += Counter(tokens)
@@ -119,7 +119,7 @@ def do_eda(out_dir,input_path,file):
         plt.savefig(out_dir+'tokens_distribution.png')
         plt.close()
 
-        strs = 'Mean for length distribution of '+ file+ ' is ' + str(mean) + '. Std is ' + str(std) + '. Number of Rare tokens is ' + str(num_rare) +'.'
+        strs = 'Mean for length distribution of ' + file + ' is ' + str(mean) + '. The standard deviation is ' + str(std) + '. Number of rare tokens is ' + str(num_rare) +'.'
         f = open(out_dir+ "description.txt", "a")
         f.write(strs)
         f.close()
