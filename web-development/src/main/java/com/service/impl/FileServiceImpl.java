@@ -112,14 +112,14 @@ public class FileServiceImpl implements FileService {
                     String[] wordAndValue = lineTxt.split("\t");
                     wordCloud = new HashMap<>();
                     wordCloud.put("name", wordAndValue[1]);
-                    wordCloud.put("value", new valueOf(wordAndValue[0]));
+                    wordCloud.put("value", new Double(wordAndValue[0]));
                     wordCloudList.add(wordCloud);
                 }
                 else {
                     String[] wordAndValue = lineTxt.split("\t");
                     wordCloud = new HashMap<>();
                     wordCloud.put("name", wordAndValue[1]);
-                    wordCloud.put("value", new valueOf(wordAndValue[0]));
+                    wordCloud.put("value", new Double(wordAndValue[0]));
                     wordCloudList.add(wordCloud);
                 }
             }
