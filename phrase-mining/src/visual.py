@@ -176,6 +176,8 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         with open('data/raw/input.txt', 'r') as file_op:
             d = file_op.read()
 
+        print('last file reading done')
+
         word_list = re.findall(r'[A-Za-z]+[0-9]?[+-]*', d)
         word_count = Counter(word_list)
         single_top_20 = data_kk_single[:20]

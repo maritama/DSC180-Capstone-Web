@@ -53,6 +53,7 @@ def do_eda(out_dir,input_path,file):
                     linewidths = 2,
                     edgecolor='b',
                     alpha = 0.5)
+        plt.xticks(rotation = 45)
         plt.title('Distribution of Tokenized Words')
         plt.xlabel('Words')
         plt.ylabel('Frequency')
