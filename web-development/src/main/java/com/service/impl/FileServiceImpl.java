@@ -20,10 +20,8 @@ public class FileServiceImpl implements FileService {
 
         Map<String, Object> data = null;
         try {
-            file.transferTo(new File("/Users/johnwang/desktop/phrase-mining/data/raw/input.txt"));
-
-            // LATEST FOR DOCKER 02/22 7PM PST:
-//            file.transferTo(new File("/app/phrase-mining/data/raw/input.txt"));
+            // file.transferTo(new File("/Users/johnwang/desktop/phrase-mining/data/raw/input.txt"));
+           file.transferTo(new File("/app/phrase-mining/data/raw/input.txt"));
 
             InputStreamReader read = new InputStreamReader(
                     file.getInputStream(),"utf-8");
@@ -46,50 +44,53 @@ public class FileServiceImpl implements FileService {
 
 
     public Result fileRead(String path) {
-        // LATEST FOR DOCKER 02/22 7PM PST:
-
-//        String all = "";
-//        String autoPhrase = "/app/phrase-mining/data/outputs/AutoPhrase.txt";
-//
-//        String single = "";
-//        String autoPhrase_single = "/app/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
-//
-//        String multi = "";
-//        String autoPhrase_multi = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
-//
-//        String tf = "";
-//        String Tfidf = "/app/phrase-mining/data/outputs/tfidfall.txt";
-//
-//        String multiplication_all = "";
-//        String autoPhraseTf = "/app/phrase-mining/data/outputs/multiplicationall.txt";
-//
-
-        String seg = "";
-        String segmentation = "/Users/johnwang/desktop/phrase-mining/data/outputs/segmentation.txt";
 
         String all = "";
-        String autoPhrase = "/Users/johnwang/desktop/phrase-mining/data/outputs/AutoPhrase.txt";
+        String autoPhrase = "/app/phrase-mining/data/outputs/AutoPhrase.txt";
+
+        String single = "";
+        String autoPhrase_single = "/app/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
+
+        String multi = "";
+        String autoPhrase_multi = "/app/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
 
         String tf = "";
-        String Tfidf = "/Users/johnwang/desktop/phrase-mining/data/outputs/tfidfall.txt";
+        String Tfidf = "/app/phrase-mining/data/outputs/tfidfall.txt";
 
         String multiplication_all = "";
-        String autoPhraseTf = "/Users/johnwang/desktop/phrase-mining/data/outputs/multiplicationall.txt";
+        String autoPhraseTf = "/app/phrase-mining/data/outputs/multiplicationall.txt";
+        
+        String seg = "";
+        String segmentation = "/app/phrase-mining/data/outputs/segmentation.txt";
 
         String description = "";
-        String description1 = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/description.txt";
+        String description1 = "/app/phrase-mining/data/outputs/eda/description.txt";
 
-//        String single = "";
-//        String autoPhrase_single = "/Users/johnwang/desktop/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
-//
-//        String multi = "";
-//        String autoPhrase_multi = "/Users/johnwang/desktop/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
+
+        // String all = "";
+        // String autoPhrase = "/Users/johnwang/desktop/phrase-mining/data/outputs/AutoPhrase.txt";
+
+        // String single = "";
+        // String autoPhrase_single = "/Users/johnwang/desktop/phrase-mining/data/outputs/AutoPhrase_single-word.txt";
+
+        // String multi = "";
+        // String autoPhrase_multi = "/Users/johnwang/desktop/phrase-mining/data/outputs/AutoPhrase_multi-words.txt";
+
+        // String tf = "";
+        // String Tfidf = "/Users/johnwang/desktop/phrase-mining/data/outputs/tfidfall.txt";
+
+        // String multiplication_all = "";
+        // String autoPhraseTf = "/Users/johnwang/desktop/phrase-mining/data/outputs/multiplicationall.txt";
+
+        // String seg = "";
+        // String segmentation = "/Users/johnwang/desktop/phrase-mining/data/outputs/segmentation.txt";
+   
+        // String description = "";
+        // String description1 = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/description.txt";
 
 
         List<Map<String,Object>> wordCloudList = new ArrayList<>();
         Map<String, Object> data = null;
-
-
 
         try {
             System.out.println("try");
@@ -147,7 +148,7 @@ public class FileServiceImpl implements FileService {
             }
             bufferedReader.close();
             read.close();
-//            System.out.println(single);
+//            System.out.println(description);
 
 
 
@@ -162,7 +163,7 @@ public class FileServiceImpl implements FileService {
             }
             bufferedReader.close();
             read.close();
-//            System.out.println(multi);
+//            System.out.println(all);
 
 
 
@@ -214,12 +215,13 @@ public class FileServiceImpl implements FileService {
             /*
              ** read word distribution
              */
-//            String srcFile = "/app/phrase-mining/data/outputs/multi_quality_score.png";
-//            String destFile = "/usr/local/tomcat/webapps/python/img/multi_quality_score.png";
-//            String tempFile = path + "img/multi_quality_score.png";
-            String srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/word_distribution.png";
-            String destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/word_distribution.png";
-            String tempFile = path + "img/word_distribution.png";
+           String srcFile = "/app/phrase-mining/data/outputs/eda/word_distribution.png";
+           String destFile = "/usr/local/tomcat/webapps/python/img/word_distribution.png";
+           String tempFile = path + "img/word_distribution.png";
+
+            // String srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/word_distribution.png";
+            // String destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/word_distribution.png";
+            // String tempFile = path + "img/word_distribution.png";
 
             BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
             System.out.println(bufferedInputStream==null);
@@ -241,16 +243,18 @@ public class FileServiceImpl implements FileService {
             bufferedInputStream.close();
 
 
+
             /*
              ** read tokens_freq.png
              */
-//            String srcFile = "/app/phrase-mining/data/outputs/multi_quality_score.png";
-//            String destFile = "/usr/local/tomcat/webapps/python/img/multi_quality_score.png";
-//            String tempFile = path + "img/multi_quality_score.png";
-            srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/tokens_freq.png";
-            destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/tokens_freq.png";
+            srcFile = "/app/phrase-mining/data/outputs/eda/tokens_freq.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/tokens_freq.png";
             tempFile = path + "img/tokens_freq.png";
 
+            // srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/tokens_freq.png";
+            // destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/tokens_freq.png";
+            // tempFile = path + "img/tokens_freq.png";
+
             bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
 //            System.out.println(bufferedInputStream==null);
             destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
@@ -271,15 +275,16 @@ public class FileServiceImpl implements FileService {
 
 
             /*
-             ** read tokens_freq.png
+             ** read tokens_top20_words.png
              */
-//            String srcFile = "/app/phrase-mining/data/outputs/multi_quality_score.png";
-//            String destFile = "/usr/local/tomcat/webapps/python/img/multi_quality_score.png";
-//            String tempFile = path + "img/multi_quality_score.png";
-            srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/tokens_top20_words.png";
-            destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/tokens_top20_words.png";
+            srcFile = "/app/phrase-mining/data/outputs/eda/tokens_top20_words.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/tokens_top20_words.png";
             tempFile = path + "img/tokens_top20_words.png";
 
+            // srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/eda/tokens_top20_words.png";
+            // destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/tokens_top20_words.png";
+            // tempFile = path + "img/tokens_top20_words.png";
+
             bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
 //            System.out.println(bufferedInputStream==null);
             destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
@@ -299,14 +304,15 @@ public class FileServiceImpl implements FileService {
 
 
             /*
-             ** read tokens_freq.png
+             ** read freq_score_plot.png
              */
-//            String srcFile = "/app/phrase-mining/data/outputs/multi_quality_score.png";
-//            String destFile = "/usr/local/tomcat/webapps/python/img/multi_quality_score.png";
-//            String tempFile = path + "img/multi_quality_score.png";
-            srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/freq_score_plot.png";
-            destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/freq_score_plot.png";
+            srcFile = "/app/phrase-mining/data/outputs/freq_score_plot.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/freq_score_plot.png";
             tempFile = path + "img/freq_score_plot.png";
+
+            // srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/freq_score_plot.png";
+            // destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/freq_score_plot.png";
+            // tempFile = path + "img/freq_score_plot.png";
 
             bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
 //            System.out.println(bufferedInputStream==null);
@@ -330,12 +336,13 @@ public class FileServiceImpl implements FileService {
             /*
              ** read comparison quality score image
              */
-//            srcFile = "/app/phrase-mining/data/outputs/comparison_quality_score.png";
-//            destFile = "/usr/local/tomcat/webapps/python/img/comparison_quality_score.png";
-//            tempFile = path + "img/comparison_quality_score.png";
-            srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/comparison_quality_score.png";
-            destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/comparison_quality_score.png";
+            srcFile = "/app/phrase-mining/data/outputs/comparison_quality_score.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/comparison_quality_score.png";
             tempFile = path + "img/comparison_quality_score.png";
+
+            // srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/comparison_quality_score.png";
+            // destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/comparison_quality_score.png";
+            // tempFile = path + "img/comparison_quality_score.png";
 
             bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
             destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
@@ -360,12 +367,13 @@ public class FileServiceImpl implements FileService {
             /*
              ** read sentiment polarity distribution image
              */
-//            srcFile = "/app/phrase-mining/data/outputs/sentiment_polarity_distribution.png";
-//            destFile = "/usr/local/tomcat/webapps/python/img/sentiment_polarity_distribution.png";
-//            tempFile = path + "img/sentiment_polarity_distribution.png";
-            srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/sentiment_polarity_distribution.png";
-            destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/sentiment_polarity_distribution.png";
+            srcFile = "/app/phrase-mining/data/outputs/sentiment_polarity_distribution.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/sentiment_polarity_distribution.png";
             tempFile = path + "img/sentiment_polarity_distribution.png";
+
+            // srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/sentiment_polarity_distribution.png";
+            // destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/sentiment_polarity_distribution.png";
+            // tempFile = path + "img/sentiment_polarity_distribution.png";
 
             bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
             destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
@@ -389,9 +397,10 @@ public class FileServiceImpl implements FileService {
             /*
              ** read sentiment subjectivity distribution image
              */
-//            srcFile = "/app/phrase-mining/data/outputs/sentiment_subjectivity_distribution.png";
-//            destFile = "/usr/local/tomcat/webapps/python/img/sentiment_subjectivity_distribution.png";
-//            tempFile = path + "img/sentiment_subjectivity_distribution.png";
+            srcFile = "/app/phrase-mining/data/outputs/sentiment_subjectivity_distribution.png";
+            destFile = "/usr/local/tomcat/webapps/python/img/sentiment_subjectivity_distribution.png";
+            tempFile = path + "img/sentiment_subjectivity_distribution.png";
+
             srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/sentiment_subjectivity_distribution.png";
             destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/sentiment_subjectivity_distribution.png";
             tempFile = path + "img/sentiment_subjectivity_distribution.png";
@@ -442,8 +451,8 @@ public class FileServiceImpl implements FileService {
         Map<String, Object> data = null;
         try {
             //存放路径
-//            File addFile = new File("/app/phrase-mining/AutoPhrase/data/EN/wiki_quality.txt");
-            File addFile = new File("/Users/johnwang/desktop/phrase-mining/AutoPhrase/data/EN/wiki_quality.txt");
+           File addFile = new File("/app/phrase-mining/AutoPhrase/data/EN/wiki_quality.txt");
+            // File addFile = new File("/Users/johnwang/desktop/phrase-mining/AutoPhrase/data/EN/wiki_quality.txt");
 
             InputStreamReader read = new InputStreamReader(
                     file.getInputStream(),"utf-8");
