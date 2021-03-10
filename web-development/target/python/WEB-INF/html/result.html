@@ -130,11 +130,10 @@
     <!-- TEXTBOX - description -->
     <div class="layui-row">
         <div class="layui-col-md12">
-            <textarea cols="10" rows="3x" id="description" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify">
+            <textarea cols="10" rows="2x" id="description" disabled="disabled" class="layui-textarea" style="border: none; text-align: center">
             </textarea>
         </div>
     </div>
-    <br>
 
 
     <!-- GRAPH - length distribution -->
@@ -142,8 +141,8 @@
         <div class="layui-col-md6">
                 <img id = "img5"/>
         </div>
-        <div class="layui-col-md6" style="margin: auto; width: 80%">
-            <p style = "font-size: 22px">
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: right">
                 This graph shows the distribution of sentence length in the input text corpus
             </p>
         </div>
@@ -155,8 +154,8 @@
         <div class="layui-col-md6">
                 <img id = "img1"/>
         </div>
-        <div class="layui-col-md6" style="margin: auto; width: 80%">
-            <p style = "font-size: 22px">
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: right">
                 Obtained from the tokenizer model, the graph here shows the distribution of token frequency
             </p>
         </div>
@@ -168,8 +167,8 @@
         <div class="layui-col-md6">
                 <img id = "img2"/>
         </div>
-        <div class="layui-col-md6" style="margin: auto; width: 80%">
-            <p style = "font-size: 22px">
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: right">
                 These are the top 20 words obtained upon tokenization
             </p>
         </div>
@@ -177,6 +176,7 @@
 
 
     <!-- SECTION BREAK-->
+    <br>
     <br>
 
 
@@ -210,13 +210,13 @@
 
     <!-- TABLE - autophrase -->
     <div class="layui-row">
-        <div class="layui-col-md6" style="margin: auto; width: 80%; word-wrap: normal">
-            <p style = "font-size: 22px">
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: left">
                 The main result from the AutoPhrase algorithm, this table shows scores of single- and multi-word phrases with their corresponding phrase quality scores.
             </p>
         </div>
         <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="all" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify">
+            <textarea cols="20" rows="20" id="all" disabled="disabled" class="layui-textarea" style="border: none">
             </textarea>
         </div>
     </div>
@@ -225,8 +225,8 @@
 
     <!-- GRAPH - single vs multi-word distribution -->
     <div class="layui-row">
-        <div class="layui-col-md6" style="margin: auto; width: 80%">
-            <p style = "font-size: 22px">
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: left">
                 A comparison between the quality score distributions of single-word and multi-word phrases 
             </p>
         </div>
@@ -238,8 +238,8 @@
 
     <!-- GRAPH - frequency vs score scatterplot -->
     <div class="layui-row">
-        <div class="layui-col-md6" style="margin: auto; width: 80%">
-            <p style = "font-size: 22px">
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: left">
                 This simple scatter plot shows the top 20 unigrams (based on quality score) with respect to their frequency in the text corpus.
             </p>
         </div>
@@ -251,8 +251,8 @@
 
     <!-- TABLE - tfidf all  -->
     <div class="layui-row">
-        <div class="layui-col-md6" style="margin: auto; width: 80%; word-wrap: normal">
-            <p style = "font-size: 22px">
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: left">
                 tf-idf, an information retrieval and text mining method, evaluates how relevant a word is in a corpus. 
                 The tf–idf value increases proportionally to the number of times a word appears in the document and is offset by the number of documents in the corpus that contain the word, which helps to adjust for the fact that some words appear more frequently in general. 
                 For example, words such as “that”, “with”, “to” (also known as stop words) are ignored, since they are meaningless in the context of the entire corpus.
@@ -260,8 +260,8 @@
             </p>
         </div>
         <div class="layui-col-md6">
-            <h4> tf-idf (term frequency - inverse document frequency) </h4>
-            <textarea cols="20" rows="20" id="tf" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify" >
+            <h3> tf-idf (term frequency - inverse document frequency) </h3>
+            <textarea cols="20" rows="20" id="tf" disabled="disabled" class="layui-textarea" style="border: none" >
             </textarea>
         </div>
     </div>
@@ -270,13 +270,13 @@
 
     <!-- TABLE - multiplication all -->
     <div class="layui-row">
-        <div class="layui-col-md6" style="margin: auto; width: 80%; word-wrap: normal">
-            <p style = "font-size: 22px">
-                This list is a 
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: left">
+                This list shows a metric obtained by simply multiplying the quality score of a phrase by its tfidf score.
             </p>
         </div>
         <div class="layui-col-md6">
-            <textarea cols="20" rows="20" id="multiplication-all" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify">
+            <textarea cols="20" rows="20" id="multiplication-all" disabled="disabled" class="layui-textarea" style="border: none">
             </textarea>
         </div>
     </div>
@@ -286,16 +286,16 @@
     <!-- TEXTBOX - segmentation -->
     <div class="layui-row">
         <div class="layui-col-md12">
-            <h4> Segmentation text </h4>
-            <textarea cols="40" rows="20x" id="seg" disabled="disabled" class="layui-textarea" style="border: none; text-align: justify">
+            <h3> Segmentation text </h3>
+            <textarea cols="40" rows="5x" id="seg" disabled="disabled" class="layui-textarea" style="border: none">
             </textarea>
         </div>
     </div>
 
     <div class="layui-row">
         <div class="layui-col-md6 layui-col-md-offset3">
-            <p style="color: grey;">
-                EXPLAIN SEGMENTATION
+            <p style="color: grey">
+                This text file is an intermediate output from the AutoPhrase algorithm - it separates the phrases in your input corpus (as shown), and uses these phrases to then calculate quality score.
             </p>
         </div>
     </div>
@@ -320,9 +320,9 @@
         <div class="layui-col-md6">
                 <img id = "img3"/>
         </div>
-        <div class="layui-col-md6" style="margin: auto; width: 80%">
-            <p style = "font-size: 22px">
-                EXPLAIN SENTIMENT POLARITY GRAPH
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: right">
+                Distribution of sentiment polarity by sentence. Here, a value of 1 means a completely positive attitude, 0 means a neutral attitude, and -1 means a completely negative attitude.
             </p>
         </div>
     </div>
@@ -333,9 +333,9 @@
         <div class="layui-col-md6">
             <img id = "img4"/>
         </div>
-        <div class="layui-col-md6" style="margin: auto; width: 80%">
-            <p style = "font-size: 22px">
-                EXPLAIN SENTIMENT SUBJECTIVITY GRAPH
+        <div class="layui-col-md6">
+            <p style = "font-size: 16px; text-align: right">
+                Distribution of sentiment subjectivity by sentence. Here, a value of 0 means completely objective whereas 1 means completely subjective.
             </p>
         </div>
     </div>

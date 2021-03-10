@@ -190,7 +190,6 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
         single_top_20 = data_kk_single[:20]
         # single_top_20['frequency'] = single_top_20.apply(lambda row: word_count[row['phrase']], axis = 1)
         single_top_20['frequency'] = single_top_20['phrase'].apply(lambda elem: word_count[elem])
-        print('ERROR HERE')
         single_top_20.to_csv('data/outputs/singletop20.txt', index=False)
         print('frequency vs score dataframe done')
 
@@ -206,7 +205,7 @@ def visual(input, output, out_dir,input_path,file,autophrase,multi_word,single_w
                     horizontalalignment = 'center')
         print('frequency vs score scatterplot text done')
 
-        plt.scatter(x = math.log(single_top_20.value),
+        plt.scatter(x = single_top_20.value,
                     y = single_top_20.frequency,
                     c = 'lightgrey',
                     s = single_top_20.value,

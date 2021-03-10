@@ -150,14 +150,14 @@ public class FileServiceImpl implements FileService {
 //                     String[] wordAndValue = lineTxt.split(",");
 //                     wordCloud = new HashMap<>();
 //                     wordCloud.put("name", wordAndValue[0]);
-//                     wordCloud.put("value", new parseDouble(wordAndValue[1]));
+//                     wordCloud.put("value", new Double(wordAndValue[1]));
 //                     wordCloudList.add(wordCloud);
 //                 }
 //                 else {
 //                     String[] wordAndValue = lineTxt.split(",");
 //                     wordCloud = new HashMap<>();
 //                     wordCloud.put("name", wordAndValue[0]);
-//                     wordCloud.put("value", new parseDouble(wordAndValue[1]));
+//                     wordCloud.put("value", new Double(wordAndValue[1]));
 //                     wordCloudList.add(wordCloud);
 //                 }
 // //                System.out.println(all);
@@ -433,9 +433,9 @@ public class FileServiceImpl implements FileService {
             destFile = "/usr/local/tomcat/webapps/python/img/sentiment_subjectivity_distribution.png";
             tempFile = path + "img/sentiment_subjectivity_distribution.png";
 
-            srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/sentiment_subjectivity_distribution.png";
-            destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/sentiment_subjectivity_distribution.png";
-            tempFile = path + "img/sentiment_subjectivity_distribution.png";
+            // srcFile = "/Users/johnwang/desktop/phrase-mining/data/outputs/sentiment_subjectivity_distribution.png";
+            // destFile = "/Users/johnwang/desktop/python/src/main/webapp/img/sentiment_subjectivity_distribution.png";
+            // tempFile = path + "img/sentiment_subjectivity_distribution.png";
 
             bufferedInputStream = new BufferedInputStream(new FileInputStream(new File(srcFile)));
             destFileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(destFile)));
